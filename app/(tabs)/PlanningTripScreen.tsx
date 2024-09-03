@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Checkbox } from 'react-native-paper';
@@ -10,6 +10,37 @@ const PlanningTripScreen = () => {
   const [natureChecked, setNatureChecked] = useState(false);
   const [beachChecked, setBeachChecked] = useState(false);
   const [categoryType, setCategoryType] = useState('solo');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const trendingImages = [
+    'https://example.com/trending1.jpg',
+    'https://example.com/trending2.jpg',
+    'https://example.com/trending3.jpg',
+  ];
+
+  const destinationImages = {
+    hiking: ['https://example.com/hiking1.jpg', 'https://example.com/hiking2.jpg'],
+    historical: ['https://example.com/historical1.jpg', 'https://example.com/historical2.jpg'],
+    nature: ['https://example.com/nature1.jpg', 'https://example.com/nature2.jpg'],
+    beach: ['https://example.com/beach1.jpg', 'https://example.com/beach2.jpg'],
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % trendingImages.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const getSelectedDestinationImages = () => {
+    const selectedImages = [];
+    if (hikingChecked) selectedImages.push(...destinationImages.hiking);
+    if (historicalChecked) selectedImages.push(...destinationImages.historical);
+    if (natureChecked) selectedImages.push(...destinationImages.nature);
+    if (beachChecked) selectedImages.push(...destinationImages.beach);
+    return selectedImages.length > 0 ? selectedImages : Object.values(destinationImages).flat();
+  };
 
   return (
     <View style={styles.container}>
@@ -23,35 +54,21 @@ const PlanningTripScreen = () => {
 
         <View style={styles.trendingTripCard}>
           <Image
-            source={{ uri: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.travelandleisureasia.com%2Fglobal%2Fdestinations%2Fsouth-asia%2Fbeautiful-places-to-visit-in-sri-lanka%2F&psig=AOvVaw2tFjA0wPrQcaovyi8pEdVI&ust=1725485657319000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLi5h5Ddp4gDFQAAAAAdAAAAABAE' }}
+            source={{ uri: trendingImages[currentImageIndex] }}
             style={styles.trendingTripImage}
           />
           <View style={styles.dotContainer}>
-            <View style={[styles.dot, styles.activeDot]} />
-            <View style={styles.dot} />
-            <View style={styles.dot} />
+            {trendingImages.map((_, index) => (
+              <View
+                key={index}
+                style={[styles.dot, index === currentImageIndex && styles.activeDot]}
+              />
+            ))}
           </View>
         </View>
 
         <View style={styles.planTripSection}>
           <Text style={styles.planTripTitle}>Plan a new trip</Text>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.inputLabel}>Select Destinations</Text>
-            <View style={styles.destinationImagesContainer}>
-              <TouchableOpacity style={styles.arrowButton}>
-                <Icon name="chevron-back" size={20} color="#000" />
-              </TouchableOpacity>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <View style={styles.destinationImage} />
-                <View style={styles.destinationImage} />
-                <View style={styles.destinationImage} />
-              </ScrollView>
-              <TouchableOpacity style={styles.arrowButton}>
-                <Icon name="chevron-forward" size={20} color="#000" />
-              </TouchableOpacity>
-            </View>
-          </View>
 
           <View style={styles.checkboxContainer}>
             <Checkbox.Item 
@@ -75,6 +92,12 @@ const PlanningTripScreen = () => {
               onPress={() => setBeachChecked(!beachChecked)}
             />
           </View>
+
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.destinationCarousel}>
+            {getSelectedDestinationImages().map((image, index) => (
+              <Image key={index} source={{ uri: image }} style={styles.destinationImage} />
+            ))}
+          </ScrollView>
 
           <View style={styles.inputContainer}>
             <Text style={styles.inputLabel}>Days</Text>
@@ -101,7 +124,12 @@ const PlanningTripScreen = () => {
             <Text style={styles.inputLabel}>Members</Text>
             <View style={styles.input} />
           </View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Budget Range</Text>
+            <View style={styles.input} />
+          </View>
         </View>
+        
       </ScrollView>
     </View>
   );
@@ -113,7 +141,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   scrollViewContent: {
-    paddingBottom: 80, // Add padding to the bottom to account for the menu bar
+    paddingBottom: 86, 
   },
   header: {
     flexDirection: 'row',
@@ -199,6 +227,16 @@ const styles = StyleSheet.create({
   picker: {
     height: 40,
   },
+  destinationCarousel: {
+    marginVertical: 16,
+  },
+  destinationImages: {
+    width: 120,
+    height: 80,
+    marginRight: 8,
+    borderRadius: 8,
+  },
+
 });
 
 export default PlanningTripScreen;

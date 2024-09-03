@@ -6,13 +6,15 @@ import { useNavigation } from '@react-navigation/native';
 import PlanningTripScreen from './PlanningTripScreen';
 import ProfileScreen from "@/app/profile";
 import SesonalTrends from './SesonalTrends';
+import TourGuide from './TourGuide';
+import TopGuides from './TourGuide';
 
 
 const Tab = createBottomTabNavigator();
 
 // Placeholder screen components
 const HomeScreen = () => <View style={styles.screen}></View>;
-const SearchScreen = () => <View style={styles.screen}></View>;
+
 
 
 const CustomTabBarButton = ({ children, onPress }) => (
@@ -58,7 +60,7 @@ const MenuBar = () => {
                     <Ionicons name="home-outline" size={24} color={focused ? '#FF9500' : 'black'} />
                 ),
             }} />
-            <Tab.Screen name="Search" component={SearchScreen} options={{
+            <Tab.Screen name="Search" component={TopGuides} options={{
                 tabBarIcon: ({ focused }) => (
                     <Ionicons name="search-outline" size={24} color={focused ? '#FF9500' : 'black'} />
                 ),

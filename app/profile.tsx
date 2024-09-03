@@ -1,12 +1,11 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import MenuBar from "@/app/(tabs)/MenuBar"; // Ensure the path is correct
 
 export default function ProfileScreen() {
     return (
         <View style={styles.container}>
-            <ScrollView>
+            <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 <View style={styles.profileContainer}>
                     <Image
                         style={styles.profileImage}
@@ -22,15 +21,15 @@ export default function ProfileScreen() {
                     </View>
                     <View style={styles.statsContainer}>
                         <View style={styles.statItem}>
-                            <Ionicons name="ios-globe-outline" size={24} color="blue" />
+                            <Ionicons name="globe-outline" size={24} color="blue" />
                             <Text style={styles.statText}>4,950 Trips</Text>
                         </View>
                         <View style={styles.statItem}>
-                            <Ionicons name="ios-star-outline" size={24} color="gold" />
+                            <Ionicons name="star-outline" size={24} color="gold" />
                             <Text style={styles.statText}>1.2K Points</Text>
                         </View>
                         <View style={styles.statItem}>
-                            <Ionicons name="ios-chatbubbles-outline" size={24} color="green" />
+                            <Ionicons name="chatbubbles-outline" size={24} color="green" />
                             <Text style={styles.statText}>897 Comments</Text>
                         </View>
                     </View>
@@ -54,9 +53,7 @@ export default function ProfileScreen() {
                     </View>
                 </View>
             </ScrollView>
-            <View style={styles.menuBarContainer}>
-                <MenuBar />
-            </View>
+           
         </View>
     );
 }
@@ -65,6 +62,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f5f5f5',
+    },
+    scrollViewContent: {
+        paddingBottom: 96, 
     },
     profileContainer: {
         backgroundColor: '#e3f2fd',
@@ -130,9 +130,26 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     menuBarContainer: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: '#ffffff',
         borderTopWidth: 1,
         borderColor: '#ddd',
-        backgroundColor: '#ffffff',
-        padding: 10,
+    },
+    menuBar: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        height: 60,
+    },
+    addButton: {
+        backgroundColor: 'orange',
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });

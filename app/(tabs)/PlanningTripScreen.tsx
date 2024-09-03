@@ -14,7 +14,7 @@ const PlanningTripScreen = () => {
 
       <View style={styles.trendingTripCard}>
         <Image
-          source={{ uri: 'https://example.com/trending-trip-image.jpg' }}
+          source={{ uri: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.travelandleisureasia.com%2Fglobal%2Fdestinations%2Fsouth-asia%2Fbeautiful-places-to-visit-in-sri-lanka%2F&psig=AOvVaw2tFjA0wPrQcaovyi8pEdVI&ust=1725485657319000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLi5h5Ddp4gDFQAAAAAdAAAAABAE' }}
           style={styles.trendingTripImage}
         />
         <View style={styles.dotContainer}>

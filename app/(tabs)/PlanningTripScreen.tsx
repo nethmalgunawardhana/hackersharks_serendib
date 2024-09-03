@@ -1,69 +1,109 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Checkbox } from 'react-native-paper';
+import { Picker } from '@react-native-picker/picker';
 
 const PlanningTripScreen = () => {
+  const [hikingChecked, setHikingChecked] = useState(false);
+  const [historicalChecked, setHistoricalChecked] = useState(false);
+  const [natureChecked, setNatureChecked] = useState(false);
+  const [beachChecked, setBeachChecked] = useState(false);
+  const [categoryType, setCategoryType] = useState('solo');
+
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <Icon name="chevron-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Trending Trips</Text>
-      </View>
-
-      <View style={styles.trendingTripCard}>
-        <Image
-          source={{ uri: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.travelandleisureasia.com%2Fglobal%2Fdestinations%2Fsouth-asia%2Fbeautiful-places-to-visit-in-sri-lanka%2F&psig=AOvVaw2tFjA0wPrQcaovyi8pEdVI&ust=1725485657319000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLi5h5Ddp4gDFQAAAAAdAAAAABAE' }}
-          style={styles.trendingTripImage}
-        />
-        <View style={styles.dotContainer}>
-          <View style={[styles.dot, styles.activeDot]} />
-          <View style={styles.dot} />
-          <View style={styles.dot} />
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <View style={styles.header}>
+          <TouchableOpacity>
+            <Icon name="chevron-back" size={24} color="#000" />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Trending Trips</Text>
         </View>
-      </View>
 
-      <View style={styles.planTripSection}>
-        <Text style={styles.planTripTitle}>Plan a new trip</Text>
-
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Select Destinations</Text>
-          <View style={styles.destinationImagesContainer}>
-            <TouchableOpacity style={styles.arrowButton}>
-              <Icon name="chevron-back" size={20} color="#000" />
-            </TouchableOpacity>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              {/* Add destination images here */}
-              <View style={styles.destinationImage} />
-              <View style={styles.destinationImage} />
-              <View style={styles.destinationImage} />
-            </ScrollView>
-            <TouchableOpacity style={styles.arrowButton}>
-              <Icon name="chevron-forward" size={20} color="#000" />
-            </TouchableOpacity>
+        <View style={styles.trendingTripCard}>
+          <Image
+            source={{ uri: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.travelandleisureasia.com%2Fglobal%2Fdestinations%2Fsouth-asia%2Fbeautiful-places-to-visit-in-sri-lanka%2F&psig=AOvVaw2tFjA0wPrQcaovyi8pEdVI&ust=1725485657319000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLi5h5Ddp4gDFQAAAAAdAAAAABAE' }}
+            style={styles.trendingTripImage}
+          />
+          <View style={styles.dotContainer}>
+            <View style={[styles.dot, styles.activeDot]} />
+            <View style={styles.dot} />
+            <View style={styles.dot} />
           </View>
         </View>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Days</Text>
-          <View style={styles.input} />
-        </View>
+        <View style={styles.planTripSection}>
+          <Text style={styles.planTripTitle}>Plan a new trip</Text>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Category Type</Text>
-          <View style={styles.selectInput}>
-            <Text>Select</Text>
-            <Icon name="chevron-down" size={20} color="#000" />
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Select Destinations</Text>
+            <View style={styles.destinationImagesContainer}>
+              <TouchableOpacity style={styles.arrowButton}>
+                <Icon name="chevron-back" size={20} color="#000" />
+              </TouchableOpacity>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                <View style={styles.destinationImage} />
+                <View style={styles.destinationImage} />
+                <View style={styles.destinationImage} />
+              </ScrollView>
+              <TouchableOpacity style={styles.arrowButton}>
+                <Icon name="chevron-forward" size={20} color="#000" />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.checkboxContainer}>
+            <Checkbox.Item 
+              label="Hiking" 
+              status={hikingChecked ? 'checked' : 'unchecked'} 
+              onPress={() => setHikingChecked(!hikingChecked)}
+            />
+            <Checkbox.Item 
+              label="Historical" 
+              status={historicalChecked ? 'checked' : 'unchecked'} 
+              onPress={() => setHistoricalChecked(!historicalChecked)}
+            />
+            <Checkbox.Item 
+              label="Nature" 
+              status={natureChecked ? 'checked' : 'unchecked'} 
+              onPress={() => setNatureChecked(!natureChecked)}
+            />
+            <Checkbox.Item 
+              label="Beach" 
+              status={beachChecked ? 'checked' : 'unchecked'} 
+              onPress={() => setBeachChecked(!beachChecked)}
+            />
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Days</Text>
+            <View style={styles.input} />
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Category Type</Text>
+            <View style={styles.selectInput}>
+              <Picker
+                selectedValue={categoryType}
+                onValueChange={(itemValue) => setCategoryType(itemValue)}
+                style={styles.picker}
+              >
+                <Picker.Item label="Solo" value="solo" />
+                <Picker.Item label="Friends" value="friends" />
+                <Picker.Item label="Family" value="family" />
+                <Picker.Item label="Couple" value="couple" />
+              </Picker>
+            </View>
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Members</Text>
+            <View style={styles.input} />
           </View>
         </View>
-
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>members</Text>
-          <View style={styles.input} />
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -71,6 +111,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
+  },
+  scrollViewContent: {
+    paddingBottom: 80, // Add padding to the bottom to account for the menu bar
   },
   header: {
     flexDirection: 'row',
@@ -129,16 +172,6 @@ const styles = StyleSheet.create({
     height: 40,
     paddingHorizontal: 8,
   },
-  selectInput: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    height: 40,
-    paddingHorizontal: 8,
-  },
   destinationImagesContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -152,6 +185,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#ddd',
     marginHorizontal: 4,
     borderRadius: 4,
+  },
+  checkboxContainer: {
+    marginBottom: 16,
+  },
+  selectInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    height: 40,
+    justifyContent: 'center',
+  },
+  picker: {
+    height: 40,
   },
 });
 

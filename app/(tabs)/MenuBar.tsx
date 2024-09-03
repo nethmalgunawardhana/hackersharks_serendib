@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 import PlanningTripScreen from './PlanningTripScreen';
 import ProfileScreen from "@/app/profile";
 import SesonalTrends from './SesonalTrends';
-import TourGuide from './TourGuide';
 import TopGuides from './TourGuide';
 
 

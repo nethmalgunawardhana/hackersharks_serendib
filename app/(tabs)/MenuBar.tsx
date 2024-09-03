@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import PlanningTripScreen from './PlanningTripScreen';
 import ProfileScreen from "@/app/profile";
+import SesonalTrends from './SesonalTrends';
 
 
 const Tab = createBottomTabNavigator();
@@ -12,7 +13,7 @@ const Tab = createBottomTabNavigator();
 // Placeholder screen components
 const HomeScreen = () => <View style={styles.screen}></View>;
 const SearchScreen = () => <View style={styles.screen}></View>;
-const BookmarkScreen = () => <View style={styles.screen}></View>;
+
 
 const CustomTabBarButton = ({ children, onPress }) => (
     <TouchableOpacity
@@ -74,7 +75,7 @@ const MenuBar = () => {
                     )
                 }}
             />
-            <Tab.Screen name="Bookmark" component={BookmarkScreen} options={{
+            <Tab.Screen name="Bookmark" component={SesonalTrends} options={{
                 tabBarIcon: ({ focused }) => (
                     <Ionicons name="bookmark-outline" size={24} color={focused ? '#FF9500' : 'black'} />
                 ),

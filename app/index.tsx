@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import MenuBar from "./(tabs)/MenuBar"; 
+import TravelApp from "./TravelApp"; 
 
 export default function Index() {
   return (
@@ -10,6 +11,7 @@ export default function Index() {
       <View style={{ flex: 1 }}>
 
       <MenuBar />
+         
       </View>
     </SafeAreaProvider>
   );

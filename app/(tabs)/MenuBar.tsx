@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import PlanningTripScreen from './PlanningTripScreen';
-import ProfileScreen from "@/app/profile";
+import ProfileScreen from "./profile";
 import SesonalTrends from './SesonalTrends';
 import TopGuides from './TourGuide';
 

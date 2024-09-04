@@ -4,13 +4,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import PlanningTripScreen from './PlanningTripScreen';
-import ProfileScreen from "@/app/profile";
-
+import ProfileScreen from '@/app/profile';
+import DashboardScreen from "@/app/dashboard";
+// Import your DashboardScreen
 
 const Tab = createBottomTabNavigator();
 
-// Placeholder screen components
-const HomeScreen = () => <View style={styles.screen}></View>;
+// Placeholder screen components (Remove these if they are no longer needed)
+// const HomeScreen = () => <View style={styles.screen}></View>;
 const SearchScreen = () => <View style={styles.screen}></View>;
 const BookmarkScreen = () => <View style={styles.screen}></View>;
 
@@ -52,11 +53,15 @@ const MenuBar = () => {
                 }
             }}
         >
-            <Tab.Screen name="Home" component={HomeScreen} options={{
-                tabBarIcon: ({ focused }) => (
-                    <Ionicons name="home-outline" size={24} color={focused ? '#FF9500' : 'black'} />
-                ),
-            }} />
+            <Tab.Screen
+                name="Home"
+                component={DashboardScreen} // Use DashboardScreen for Home
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Ionicons name="home-outline" size={24} color={focused ? '#FF9500' : 'black'} />
+                    ),
+                }}
+            />
             <Tab.Screen name="Search" component={SearchScreen} options={{
                 tabBarIcon: ({ focused }) => (
                     <Ionicons name="search-outline" size={24} color={focused ? '#FF9500' : 'black'} />

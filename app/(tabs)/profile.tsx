@@ -11,7 +11,7 @@ export default function ProfileScreen() {
             {/* Settings Icon at the top-right corner of the screen */}
             <TouchableOpacity
                 style={styles.settingsIcon}
-                onPress={() => navigation.navigate('Settings')} // Navigate to Settings screen
+                onPress={() => navigation.navigate('SettingsScreen')} // Navigate to Settings screen
             >
                 <Ionicons name="settings-outline" size={28} color="black" />
             </TouchableOpacity>

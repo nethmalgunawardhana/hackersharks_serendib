@@ -1,16 +1,20 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import MenuBar from "@/app/(tabs)/MenuBar"; // Ensure the path is correct
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Ionicons, FontAwesome } from '@expo/vector-icons'; // Import FontAwesome for better icon options
 
 export default function ProfileScreen() {
     return (
         <View style={styles.container}>
-            <ScrollView>
+            {/* Settings Icon at the top-right corner of the screen */}
+            <TouchableOpacity style={styles.settingsIcon}>
+                <Ionicons name="settings-outline" size={28} color="black" />
+            </TouchableOpacity>
+
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
                 <View style={styles.profileContainer}>
                     <Image
                         style={styles.profileImage}
-                        source={{ uri: 'https://images.unsplash.com/photo-1595152772835-219674b2a8a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHByb2ZpbGV8ZW58MHx8fHwxNjAwMzEyNzU0&ixlib=rb-1.2.1&q=80&w=400' }}
+                        source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }}
                     />
                     <Text style={styles.name}>Patrick Harris</Text>
                     <View style={styles.countryContainer}>
@@ -20,18 +24,23 @@ export default function ProfileScreen() {
                         />
                         <Text style={styles.countryName}>Germany</Text>
                     </View>
+
+                    {/* Stats Container */}
                     <View style={styles.statsContainer}>
                         <View style={styles.statItem}>
-                            <Ionicons name="ios-globe-outline" size={24} color="blue" />
-                            <Text style={styles.statText}>4,950 Trips</Text>
+                            <Ionicons name="airplane-outline" size={24} color="blue" />
+                            <Text style={styles.statNumber}>4,950</Text>
+                            <Text style={styles.statLabel}>Trips</Text>
                         </View>
                         <View style={styles.statItem}>
-                            <Ionicons name="ios-star-outline" size={24} color="gold" />
-                            <Text style={styles.statText}>1.2K Points</Text>
+                            <Ionicons name="star-outline" size={24} color="gold" />
+                            <Text style={styles.statNumber}>1.2K</Text>
+                            <Text style={styles.statLabel}>Points</Text>
                         </View>
                         <View style={styles.statItem}>
-                            <Ionicons name="ios-chatbubbles-outline" size={24} color="green" />
-                            <Text style={styles.statText}>897 Comments</Text>
+                            <FontAwesome name="comments-o" size={24} color="green" />
+                            <Text style={styles.statNumber}>897</Text>
+                            <Text style={styles.statLabel}>Comments</Text>
                         </View>
                     </View>
                 </View>
@@ -40,7 +49,7 @@ export default function ProfileScreen() {
                     <Text style={styles.sectionTitle}>Visa Details</Text>
                     <View style={styles.detailsContainer}>
                         <Text style={styles.detailsText}>Visa Type: 1 Year Multiple Entry</Text>
-                        <Text style={styles.detailsText}>Duration: 30 day</Text>
+                        <Text style={styles.detailsText}>Duration: 30 days</Text>
                         <Text style={styles.detailsText}>Visa No: 111111</Text>
                     </View>
                 </View>
@@ -54,9 +63,6 @@ export default function ProfileScreen() {
                     </View>
                 </View>
             </ScrollView>
-            <View style={styles.menuBarContainer}>
-                <MenuBar />
-            </View>
         </View>
     );
 }
@@ -65,6 +71,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f5f5f5',
+    },
+    settingsIcon: {
+        position: 'absolute',
+        top: 40,  // Adjust as needed for padding
+        right: 20, // Adjust as needed for padding
+        zIndex: 1,
+    },
+    scrollContainer: {
+        paddingBottom: 20,
     },
     profileContainer: {
         backgroundColor: '#e3f2fd',
@@ -97,15 +112,23 @@ const styles = StyleSheet.create({
     },
     statsContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between', // Spread the items evenly
         marginTop: 20,
+        width: '100%', // Take full width for better spacing
+        paddingHorizontal: 20,
     },
     statItem: {
         alignItems: 'center',
+        flex: 1, // Ensures each stat takes equal space
     },
-    statText: {
-        marginTop: 5,
+    statNumber: {
         fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 5,
+    },
+    statLabel: {
+        fontSize: 14,
+        color: '#666',
     },
     section: {
         margin: 20,
@@ -128,11 +151,5 @@ const styles = StyleSheet.create({
     detailsText: {
         fontSize: 16,
         marginBottom: 10,
-    },
-    menuBarContainer: {
-        borderTopWidth: 1,
-        borderColor: '#ddd',
-        backgroundColor: '#ffffff',
-        padding: 10,
     },
 });

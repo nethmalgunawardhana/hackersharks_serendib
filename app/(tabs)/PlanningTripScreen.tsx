@@ -6,39 +6,31 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  TextInput,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { Checkbox } from "react-native-paper";
 import { Picker } from "@react-native-picker/picker";
 
 const trending1 = require("../../assets/images/trending1.png");
 const trending2 = require("../../assets/images/trending2.png");
 const trending3 = require("../../assets/images/trending3.png");
 
+type DestinationType = "Hiking" | "Nature" | "Historical" | "Beach";
+
 const PlanningTripScreen = () => {
-  const [hikingChecked, setHikingChecked] = useState(false);
-  const [historicalChecked, setHistoricalChecked] = useState(false);
-  const [natureChecked, setNatureChecked] = useState(false);
-  const [beachChecked, setBeachChecked] = useState(false);
-  const [categoryType, setCategoryType] = useState("solo");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [categoryType, setCategoryType] = useState("");
+  const [selectedDestinations, setSelectedDestinations] = useState<
+    DestinationType[]
+  >([]);
 
   const trendingImages = [trending1, trending2, trending3];
 
-  const destinationImages = {
-    hiking: [
-      "https://example.com/hiking1.jpg",
-      "https://example.com/hiking2.jpg",
-    ],
-    historical: [
-      "https://example.com/historical1.jpg",
-      "https://example.com/historical2.jpg",
-    ],
-    nature: [
-      "https://example.com/nature1.jpg",
-      "https://example.com/nature2.jpg",
-    ],
-    beach: ["https://example.com/beach1.jpg", "https://example.com/beach2.jpg"],
+  const destinationImages: Record<DestinationType, any> = {
+    Hiking: require("../../assets/images/hiking1.png"),
+    Nature: require("../../assets/images/nature1.png"),
+    Historical: require("../../assets/images/historical1.png"),
+    Beach: require("../../assets/images/beach1.png"),
   };
 
   useEffect(() => {
@@ -51,15 +43,12 @@ const PlanningTripScreen = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const getSelectedDestinationImages = () => {
-    const selectedImages = [];
-    if (hikingChecked) selectedImages.push(...destinationImages.hiking);
-    if (historicalChecked) selectedImages.push(...destinationImages.historical);
-    if (natureChecked) selectedImages.push(...destinationImages.nature);
-    if (beachChecked) selectedImages.push(...destinationImages.beach);
-    return selectedImages.length > 0
-      ? selectedImages
-      : Object.values(destinationImages).flat();
+  const toggleDestination = (destination: DestinationType) => {
+    setSelectedDestinations((prev) =>
+      prev.includes(destination)
+        ? prev.filter((d) => d !== destination)
+        : [...prev, destination]
+    );
   };
 
   return (
@@ -74,7 +63,7 @@ const PlanningTripScreen = () => {
 
         <View style={styles.trendingTripCard}>
           <Image
-            source={{ uri: trendingImages[currentImageIndex] }}
+            source={trendingImages[currentImageIndex]}
             style={styles.trendingTripImage}
           />
           <View style={styles.dotContainer}>
@@ -93,27 +82,25 @@ const PlanningTripScreen = () => {
         <View style={styles.planTripSection}>
           <Text style={styles.planTripTitle}>Plan a new trip</Text>
 
-          <View style={styles.checkboxContainer}>
-            <Checkbox.Item
-              label="Hiking"
-              status={hikingChecked ? "checked" : "unchecked"}
-              onPress={() => setHikingChecked(!hikingChecked)}
-            />
-            <Checkbox.Item
-              label="Historical"
-              status={historicalChecked ? "checked" : "unchecked"}
-              onPress={() => setHistoricalChecked(!historicalChecked)}
-            />
-            <Checkbox.Item
-              label="Nature"
-              status={natureChecked ? "checked" : "unchecked"}
-              onPress={() => setNatureChecked(!natureChecked)}
-            />
-            <Checkbox.Item
-              label="Beach"
-              status={beachChecked ? "checked" : "unchecked"}
-              onPress={() => setBeachChecked(!beachChecked)}
-            />
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Select Destinations</Text>
+            <View style={styles.destinationsContainer}>
+              {(Object.keys(destinationImages) as DestinationType[]).map(
+                (destination) => (
+                  <TouchableOpacity
+                    key={destination}
+                    style={[
+                      styles.destinationButton,
+                      selectedDestinations.includes(destination) &&
+                        styles.selectedDestination,
+                    ]}
+                    onPress={() => toggleDestination(destination)}
+                  >
+                    <Text style={styles.destinationText}>{destination}</Text>
+                  </TouchableOpacity>
+                )
+              )}
+            </View>
           </View>
 
           <ScrollView
@@ -121,10 +108,10 @@ const PlanningTripScreen = () => {
             showsHorizontalScrollIndicator={false}
             style={styles.destinationCarousel}
           >
-            {getSelectedDestinationImages().map((image, index) => (
+            {selectedDestinations.map((destination) => (
               <Image
-                key={index}
-                source={{ uri: image }}
+                key={destination}
+                source={destinationImages[destination]}
                 style={styles.destinationImage}
               />
             ))}
@@ -132,7 +119,7 @@ const PlanningTripScreen = () => {
 
           <View style={styles.inputContainer}>
             <Text style={styles.inputLabel}>Days</Text>
-            <View style={styles.input} />
+            <TextInput style={styles.input} keyboardType="numeric" />
           </View>
 
           <View style={styles.inputContainer}>
@@ -143,6 +130,7 @@ const PlanningTripScreen = () => {
                 onValueChange={(itemValue) => setCategoryType(itemValue)}
                 style={styles.picker}
               >
+                <Picker.Item label="Select" value="" />
                 <Picker.Item label="Solo" value="solo" />
                 <Picker.Item label="Friends" value="friends" />
                 <Picker.Item label="Family" value="family" />
@@ -153,11 +141,12 @@ const PlanningTripScreen = () => {
 
           <View style={styles.inputContainer}>
             <Text style={styles.inputLabel}>Members</Text>
-            <View style={styles.input} />
+            <TextInput style={styles.input} keyboardType="numeric" />
           </View>
+
           <View style={styles.inputContainer}>
             <Text style={styles.inputLabel}>Budget Range</Text>
-            <View style={styles.input} />
+            <TextInput style={styles.input} keyboardType="numeric" />
           </View>
         </View>
       </ScrollView>
@@ -196,7 +185,10 @@ const styles = StyleSheet.create({
   dotContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: 8,
+    position: "absolute",
+    bottom: 16,
+    left: 0,
+    right: 0,
   },
   dot: {
     width: 8,
@@ -210,6 +202,10 @@ const styles = StyleSheet.create({
   },
   planTripSection: {
     padding: 16,
+    backgroundColor: "#E6F3F5",
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    marginTop: -24,
   },
   planTripTitle: {
     fontSize: 20,
@@ -222,6 +218,7 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 16,
     marginBottom: 8,
+    color: "#333",
   },
   input: {
     borderWidth: 1,
@@ -229,23 +226,36 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     height: 40,
     paddingHorizontal: 8,
+    backgroundColor: "#fff",
   },
-  destinationImagesContainer: {
+  destinationsContainer: {
     flexDirection: "row",
-    alignItems: "center",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
-  arrowButton: {
-    padding: 8,
+  destinationButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    marginBottom: 8,
+  },
+  selectedDestination: {
+    backgroundColor: "#4CAF50",
+    borderColor: "#4CAF50",
+  },
+  destinationText: {
+    color: "#333",
+  },
+  destinationCarousel: {
+    marginVertical: 16,
   },
   destinationImage: {
-    width: 60,
-    height: 40,
-    backgroundColor: "#ddd",
-    marginHorizontal: 4,
-    borderRadius: 4,
-  },
-  checkboxContainer: {
-    marginBottom: 16,
+    width: 200,
+    height: 120,
+    marginRight: 8,
+    borderRadius: 8,
   },
   selectInput: {
     borderWidth: 1,
@@ -253,18 +263,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     height: 40,
     justifyContent: "center",
+    backgroundColor: "#fff",
   },
   picker: {
     height: 40,
-  },
-  destinationCarousel: {
-    marginVertical: 16,
-  },
-  destinationImages: {
-    width: 120,
-    height: 80,
-    marginRight: 8,
-    borderRadius: 8,
   },
 });
 

@@ -4,15 +4,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import PlanningTripScreen from './PlanningTripScreen';
-import ProfileScreen from "@/app/profile";
+import ProfileScreen from "./profile";
 import SesonalTrends from './SesonalTrends';
 import TopGuides from './TourGuide';
+import HomeScreen from './dashboard';
 
 
 const Tab = createBottomTabNavigator();
 
-// Placeholder screen components
-const HomeScreen = () => <View style={styles.screen}></View>;
+
 
 
 

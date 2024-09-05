@@ -1,8 +1,20 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type RootStackParamList = {
+  Splash: undefined;
+  Registration: undefined;
+  Login: undefined;
+};
+
+type SplashScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Splash'>;  
 
 const SplashScreen: React.FC = () => {
+  const navigation = useNavigation<SplashScreenNavigationProp>();
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
@@ -20,10 +32,16 @@ const SplashScreen: React.FC = () => {
           <Text style={styles.welcomeText}>
             Welcome to the one stop for your travel needs in Sri Lanka
           </Text>
-          <TouchableOpacity style={styles.createAccountButton}>
+          <TouchableOpacity 
+            style={styles.createAccountButton} 
+            onPress={() => navigation.navigate('Registration')}
+          >
             <Text style={styles.buttonText}>Create an Account</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity 
+            style={styles.loginButton} 
+            onPress={() => navigation.navigate('Login')}
+          >
             <Text style={styles.buttonText}>Already have an account</Text>
           </TouchableOpacity>
         </View>

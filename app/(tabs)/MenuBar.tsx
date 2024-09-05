@@ -9,6 +9,7 @@ import SesonalTrends from './SesonalTrends';
 import TopGuides from './TourGuide';
 import HomeScreen from './dashboard';
 
+
 const Tab = createBottomTabNavigator();
 
 const CustomTabBarButton = ({ children, onPress }) => (
@@ -20,7 +21,10 @@ const CustomTabBarButton = ({ children, onPress }) => (
             {children}
         </View>
     </TouchableOpacity>
+
 );
+
+const Tab = createBottomTabNavigator();
 
 const MenuBar = () => {
     const navigation = useNavigation();
@@ -28,7 +32,9 @@ const MenuBar = () => {
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
+
                 tabBarStyle: styles.tabBarStyle
+
             }}
         >
             <Tab.Screen name="Home" component={HomeScreen} options={{
@@ -77,7 +83,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E6F3F5',
         borderRadius: 15,
         height: 90,
-        paddingBottom: 10, // Adjust this if needed
+        paddingBottom: 10, 
     },
     customTabBarButton: {
         top: -30,
@@ -91,6 +97,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FF9500',
         justifyContent: 'center',
         alignItems: 'center',
+
     }
 });
 

@@ -123,9 +123,9 @@ export default function HomeScreen() {
                 </ScrollView>
             </View>
 
-            <TouchableOpacity style={styles.fab}>
-                <FontAwesome name="plus" size={24} color="white" />
-            </TouchableOpacity>
+            {/*<TouchableOpacity style={styles.fab}>*/}
+            {/*    <FontAwesome name="plus" size={24} color="white" />*/}
+            {/*</TouchableOpacity>*/}
         </ScrollView>
     );
 }
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     guideCard: {
-        backgroundColor: '#ffffff',
+        backgroundColor: '#f9f9f9', // Background color added
         padding: 15,
         borderRadius: 10,
         alignItems: 'center',
@@ -276,4 +276,3 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 });
-

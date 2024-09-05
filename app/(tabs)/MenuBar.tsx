@@ -9,32 +9,27 @@ import SesonalTrends from './SesonalTrends';
 import TopGuides from './TourGuide';
 import HomeScreen from './dashboard';
 
+const CustomTabBarButton = ({ children, onPress }) => (
+  <TouchableOpacity
+    style={{
+      top: -30,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+    onPress={onPress}
+  >
+    <View style={{
+      width: 70,
+      height: 70,
+      borderRadius: 35,
+      backgroundColor: '#FF9500',
+    }}>
+      {children}
+    </View>
+  </TouchableOpacity>
+);
 
 const Tab = createBottomTabNavigator();
-
-
-
-
-
-const CustomTabBarButton = ({ children, onPress }) => (
-    <TouchableOpacity
-        style={{
-            top: -30,
-            justifyContent: 'center',
-            alignItems: 'center',
-        }}
-        onPress={onPress}
-    >
-        <View style={{
-            width: 70,
-            height: 70,
-            borderRadius: 35,
-            backgroundColor: '#FF9500',
-        }}>
-            {children}
-        </View>
-    </TouchableOpacity>
-);
 
 const MenuBar = () => {
     const navigation = useNavigation();
@@ -47,11 +42,12 @@ const MenuBar = () => {
                     bottom: 25,
                     left: 20,
                     right: 20,
-                    elevation: 0,
                     backgroundColor: '#E6F3F5',
                     borderRadius: 15,
                     height: 90,
-                }
+                    ...styles.shadow
+                },
+                headerShown: false
             }}
         >
             <Tab.Screen name="Home" component={HomeScreen} options={{
@@ -91,11 +87,16 @@ const MenuBar = () => {
 }
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+    shadow: {
+        shadowColor: '#7F5DF0',
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.5,
+        elevation: 5
+    }
 });
 
 export default MenuBar;

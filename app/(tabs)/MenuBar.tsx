@@ -10,7 +10,8 @@ import TopGuides from './TourGuide';
 import HomeScreen from './dashboard';
 
 
-const Tab = createBottomTabNavigator();
+// Remove the duplicate declaration of 'Tab'
+// const Tab = createBottomTabNavigator();
 
 const CustomTabBarButton = ({ children, onPress }) => (
     <TouchableOpacity
@@ -33,7 +34,8 @@ const MenuBar = () => {
             screenOptions={{
                 tabBarShowLabel: false,
 
-                tabBarStyle: styles.tabBarStyle
+                tabBarStyle: styles.tabBarStyle,
+                headerShown: false
 
             }}
         >

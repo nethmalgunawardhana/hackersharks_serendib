@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet, ScrollView, ListRenderItem } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, FlatList, Image, StyleSheet, ScrollView, ListRenderItem, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 // Define types for the event data
@@ -55,42 +55,75 @@ const upcomingEvents: UpcomingEvent[] = [
 ];
 
 const EventCard: React.FC<{ event: Event }> = ({ event }) => (
-  <View style={styles.card}>
-    <Image source={{ uri: event.image }} style={styles.cardImage} />
-    <View style={styles.cardInfo}>
-      <Text style={styles.cardTitle}>{event.title}</Text>
-      <Text style={styles.cardLocation}>{event.location}</Text>
+    <View style={styles.card}>
+      <Image source={{ uri: event.image }} style={styles.cardImage} />
+      <View style={styles.cardInfo}>
+        <Text style={styles.cardTitle}>{event.title}</Text>
+        <Text style={styles.cardLocation}>{event.location}</Text>
+      </View>
     </View>
-  </View>
 );
 
 const SesonalTrends: React.FC = () => {
+  const [likedEvents, setLikedEvents] = useState<Set<string>>(new Set());
+
+  const handleLikePress = (id: string) => {
+    setLikedEvents((prev) => {
+      const newLikedEvents = new Set(prev);
+      if (newLikedEvents.has(id)) {
+        newLikedEvents.delete(id);
+      } else {
+        newLikedEvents.add(id);
+      }
+      return newLikedEvents;
+    });
+  };
+
   const renderEventCard: ListRenderItem<Event> = ({ item }) => <EventCard event={item} />;
 
-  return (
-    <ScrollView contentContainerStyle={styles.scrollViewContent}>
-      <Text style={styles.header}>Near By Events</Text>
-      <FlatList
-        data={eventsData}
-        horizontal
-        keyExtractor={(item) => item.id}
-        renderItem={renderEventCard}
-        showsHorizontalScrollIndicator={false}
-      />
-
-      <Text style={styles.header}>Upcoming Events</Text>
-      {upcomingEvents.map((event) => (
-        <View style={styles.upcomingCard} key={event.id}>
-          <Image source={{ uri: event.image }} style={styles.upcomingImage} />
-          <View style={styles.upcomingInfo}>
-            <Text style={styles.cardTitle}>{event.title}</Text>
-            <Text style={styles.cardLocation}>{event.location}</Text>
-            <Text style={styles.cardDate}>{event.date}</Text>
-            <Icon name="heart-outline" type="material-community" color="#000" size={24} />
+  const renderUpcomingEventCard: ListRenderItem<UpcomingEvent> = ({ item }) => (
+      <View style={styles.card}>
+        <Image source={{ uri: item.image }} style={styles.cardImage} />
+        <View style={styles.cardInfo}>
+          <View style={styles.cardHeader}>
+            <Text style={styles.cardTitle}>{item.title}</Text>
+            <TouchableOpacity onPress={() => handleLikePress(item.id)}>
+              <Icon
+                  name={likedEvents.has(item.id) ? 'heart' : 'heart-outline'}
+                  type="material-community"
+                  color={likedEvents.has(item.id) ? 'red' : '#000'}
+                  size={24}
+              />
+            </TouchableOpacity>
           </View>
+          <Text style={styles.cardLocation}>{item.location}</Text>
+          <Text style={styles.cardDate}>{item.date}</Text>
         </View>
-      ))}
-    </ScrollView>
+      </View>
+  );
+
+  return (
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <Text style={styles.header}>Near By Events</Text>
+        <FlatList
+            data={eventsData}
+            horizontal
+            keyExtractor={(item) => item.id}
+            renderItem={renderEventCard}
+            showsHorizontalScrollIndicator={false}
+        />
+
+        <Text style={styles.header}>Upcoming Events</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <FlatList
+              data={upcomingEvents}
+              horizontal
+              keyExtractor={(item) => item.id}
+              renderItem={renderUpcomingEventCard}
+              showsHorizontalScrollIndicator={false}
+          />
+        </ScrollView>
+      </ScrollView>
   );
 };
 
@@ -106,14 +139,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   scrollViewContent: {
-    paddingBottom: 105, 
+    paddingBottom: 105,
   },
   card: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    marginRight: 16,
+    marginHorizontal: 8, // Add horizontal margin for spacing
     overflow: 'hidden',
-    width: 200,
+    width: 200, // Ensure the width is consistent
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
@@ -128,34 +161,19 @@ const styles = StyleSheet.create({
   cardInfo: {
     padding: 10,
   },
+  cardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   cardTitle: {
     fontSize: 16,
     fontWeight: 'bold',
+    flex: 1,
   },
   cardLocation: {
     fontSize: 14,
     color: '#666',
-  },
-  upcomingCard: {
-    flexDirection: 'row',
-    marginVertical: 10,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
-  },
-  upcomingImage: {
-    height: 120,
-    width: 120,
-  },
-  upcomingInfo: {
-    flex: 1,
-    padding: 10,
-    justifyContent: 'center',
   },
   cardDate: {
     fontSize: 14,

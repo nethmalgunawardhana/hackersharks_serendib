@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
+    backgroundColor: 'lightblue',
   },
   container: {
     flex: 1,

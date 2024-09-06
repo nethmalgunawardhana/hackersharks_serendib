@@ -12,7 +12,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './Firebase'; // Make sure this path is correct
+import { auth } from './Firebase'; 
 
 type RootStackParamList = {
   Splash: undefined;

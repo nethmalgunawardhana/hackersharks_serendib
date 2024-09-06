@@ -226,7 +226,6 @@ const styles = StyleSheet.create({
     profileImage: {
         width: 80,
         height: 80,
-        clipPath: 'polygon(50% 0%, 86% 25%, 100% 63%, 75% 100%, 25% 100%, 0% 63%, 14% 25%)',
     },
     name: {
         fontSize: 18,

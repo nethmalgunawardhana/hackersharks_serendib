@@ -23,7 +23,10 @@ const Stack = createStackNavigator();
 const NewStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+<<<<<<< HEAD
     
+=======
+>>>>>>> 172114dbddeffcc1001098ae77865de1feb20658
 
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Registration" component={RegistrationScreen} />
@@ -32,6 +35,13 @@ const NewStack = () => {
       <Stack.Screen name="OTPenter" component={OTPEnterScreen} />
       <Stack.Screen name="Passwordreset" component={PasswordResetScreen} />
       <Stack.Screen name="Fogotpassword" component={ForgotPasswordScreen} />
+      <Stack.Screen name="Eligibility" component={VisaProcessEligible} />
+      <Stack.Screen name="UploadFile" component={VisaProcessUpload} />
+      <Stack.Screen name="Passport" component={PassportDetails} />
+      <Stack.Screen name="Contact" component={ContactDetails} />
+      <Stack.Screen name="Additional" component={AdditionalDetails} />
+      <Stack.Screen name="Summary" component={ApplicationSummary} />
+      
       <Stack.Screen name="Main" component={MenuBar} />
       <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} /> 

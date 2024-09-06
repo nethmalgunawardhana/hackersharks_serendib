@@ -54,8 +54,11 @@ export default function ProfileScreen() {
                 <Text style={styles.sectionTitle}>Visa Details</Text>
                 <View style={styles.detailsContainer}>
                     <Text style={styles.noVisaText}>You have not added any visa details.</Text>
-                    <TouchableOpacity style={styles.processVisaButton} onPress={() => console.log('Process Visa')}>
-                        <Text style={styles.processVisaButtonText}>Add Visa</Text>
+                    <TouchableOpacity 
+                        style={styles.processVisaButton} 
+                        onPress={() => setShowVisaQuestion(true)}
+                    >
+                        <Text style={styles.processVisaButtonText}>Add</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -187,16 +190,5 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         fontSize: 16,
         fontWeight: 'bold',
-    },
-    floatingButton: {
-        backgroundColor: '#ff6f61',
-        width: 50,
-        height: 50,
-        borderRadius: 50 / 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        bottom: 30,
-        right: 30,
     },
 });

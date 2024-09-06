@@ -34,7 +34,7 @@ const guides: Guide[] = [
   },
   {
     id: '2',
-    name: 'M. SAMEERA PERERA',
+    name: 'M. Namal PERERA',
     languages: 'English, Japan',
     age: 32,
     location: 'Kandy',

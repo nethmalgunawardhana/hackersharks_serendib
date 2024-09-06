@@ -55,10 +55,10 @@ export default function LoginScreen() {
   };
 
   return (
-      <ImageBackground
-          source={{ uri: 'https://example.com/your-background-image.jpg' }}
-          style={styles.background}
-      >
+    <ImageBackground
+    source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/d17534f43b7b60af58cdb085b7b80f7bc087d542138e57c342f9cddce9a12ec3?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf' }} 
+    style={styles.backgroundImage}
+  >
         <View style={styles.container}>
           <Text style={styles.title}>Let's get you in</Text>
 
@@ -108,7 +108,7 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  background: {
+  backgroundImage: {
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',

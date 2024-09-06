@@ -24,7 +24,7 @@ const OTPEnterScreen: React.FC = () => {
 
   return (
     <ImageBackground
-    source={{ uri: 'https://example.com/your-background-image.jpg' }}
+    source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/e3f9329ca3a453584af188f67b3ae4555b4365f0ec0e3e264c2d5255704d5d73?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf' }}
       style={styles.backgroundImage}
     >
       <LinearGradient
@@ -58,8 +58,8 @@ const OTPEnterScreen: React.FC = () => {
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    width: '100%',
-    height: '100%',
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   container: {
     flex: 1,

@@ -28,7 +28,7 @@ const ForgotPasswordScreen: React.FC = () => {
 
   return (
     <ImageBackground
-    source={{ uri: 'https://example.com/your-background-image.jpg' }}
+    source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/ac6982fdb50cd1f88b52bce27032bc7539107183dbacd539013f658115084bef?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf' }}
       style={styles.backgroundImage}
     >
       <LinearGradient
@@ -47,6 +47,7 @@ const ForgotPasswordScreen: React.FC = () => {
             <Text style={styles.getCodeText}>Get Code</Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="OTP"
@@ -54,6 +55,8 @@ const ForgotPasswordScreen: React.FC = () => {
           onChangeText={setOtp}
           keyboardType="number-pad"
         />
+        </View>
+       
         <TouchableOpacity style={styles.verifyButton} onPress={()=> navigation.navigate("Emailinput")}>
           <Text style={styles.verifyText} >Verify</Text>
         </TouchableOpacity>
@@ -76,6 +79,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     marginBottom: 15,
+    
   },
   input: {
     flex: 1,

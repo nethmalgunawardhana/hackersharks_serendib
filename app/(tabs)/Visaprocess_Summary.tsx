@@ -60,7 +60,7 @@ const ApplicationSummary: React.FC = () => {
 
       <TouchableOpacity style={styles.checkboxContainer}>
         <View style={styles.checkbox} />
-        <Text style={styles.checkboxLabel}>I accept the Terms and Conditions*</Text>
+        <Text style={styles.checkboxLabel}>I accept the<Text style={styles.highlight}> Terms and Conditions</Text><Text style={styles.required}>*</Text></Text>
       </TouchableOpacity>
 
       <Text style={styles.sectionHeader}>Documents to be carried at the Airport</Text>
@@ -87,11 +87,14 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff',
   },
+  required: {
+    color: 'red',
+  },
   header: {
     fontSize: 48,
     fontFamily: 'outrun-future',
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 40,
   },
   feeTable: {
     marginBottom: 20,
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   feeDescription: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'outrun-future',
   },
   asterisk: {
@@ -110,8 +113,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'outrun-future',
   },
+  highlight: {
+    color: '#ff6600',
+  },
   feeAmount: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'outrun-future',
     fontWeight: 'bold',
   },
@@ -124,12 +130,12 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   totalText: {
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: 'outrun-future',
     fontWeight: 'bold',
   },
   totalAmount: {
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: 'outrun-future',
     fontWeight: 'bold',
     color: '#008000',
@@ -143,18 +149,18 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   grandTotalText: {
-    fontSize: 22,
+    fontSize: 26,
     fontFamily: 'outrun-future',
     fontWeight: 'bold',
   },
   grandTotalAmount: {
-    fontSize: 22,
+    fontSize: 24,
     fontFamily: 'outrun-future',
     fontWeight: 'bold',
     color: '#008000',
   },
   declarationText: {
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: 'outrun-future',
     marginBottom: 20,
     lineHeight: 24,
@@ -165,24 +171,24 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   checkbox: {
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
     borderWidth: 1,
     borderColor: '#000',
     marginRight: 10,
   },
   checkboxLabel: {
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: 'outrun-future',
   },
   sectionHeader: {
-    fontSize: 20,
+    fontSize: 24,
     fontFamily: 'outrun-future',
     fontWeight: 'bold',
     marginBottom: 10,
   },
   documentText: {
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: 'outrun-future',
     marginBottom: 20,
     lineHeight: 24,

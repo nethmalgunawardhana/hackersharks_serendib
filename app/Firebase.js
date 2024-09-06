@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA9DH_4DPxwYAPgUIPwo7xvOoG8EqdGImk",
@@ -15,6 +14,15 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const analytics = getAnalytics(app);
 
-export { auth };
+// Conditionally initialize analytics
+let analytics = null;
+if (typeof window !== 'undefined') {
+    // We're in the browser, so we can use analytics
+    import('firebase/analytics').then((module) => {
+        const { getAnalytics } = module;
+        analytics = getAnalytics(app);
+    });
+}
+
+export { auth, analytics };

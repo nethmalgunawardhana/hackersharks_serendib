@@ -83,26 +83,26 @@ const styles = StyleSheet.create({
     },
     settingsIcon: {
         position: 'absolute',
-        top: 40,  // Adjust as needed for padding
-        right: 20, // Adjust as needed for padding
+        top: 40,  
+        right: 20, 
         zIndex: 1,
     },
     profileContainer: {
         backgroundColor: '#e3f2fd',
         alignItems: 'center',
-        paddingVertical: 10, // Reduce padding to make more space
+        paddingVertical: 10, 
         paddingHorizontal: 15,
         borderRadius: 10,
         marginHorizontal: 20,
-        marginTop: 10, // Reduce top margin to make more space
+        marginTop: 10, 
     },
     profileImage: {
-        width: 70, // Reduce image size to save space
+        width: 70, 
         height: 70,
         borderRadius: 35,
     },
     name: {
-        fontSize: 18, // Adjust font size
+        fontSize: 18, 
         fontWeight: 'bold',
         marginVertical: 5,
     },
@@ -116,29 +116,29 @@ const styles = StyleSheet.create({
         marginRight: 5,
     },
     countryName: {
-        fontSize: 14, // Adjust font size for better alignment
+        fontSize: 14, 
     },
     statsContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around', // Spread the items evenly
+        justifyContent: 'space-around', 
         marginTop: 10,
-        width: '100%', // Take full width for better spacing
+        width: '100%', 
     },
     statItem: {
         alignItems: 'center',
     },
     statNumber: {
-        fontSize: 14, // Adjust font size
+        fontSize: 14, 
         fontWeight: 'bold',
         marginTop: 3,
     },
     statLabel: {
-        fontSize: 12, // Adjust font size for better spacing
+        fontSize: 12, 
         color: '#666',
     },
     section: {
         marginHorizontal: 20,
-        marginVertical: 10, // Add some vertical spacing between sections
+        marginVertical: 10, 
     },
     sectionTitle: {
         fontSize: 18,
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     personalDetailsScroll: {
-        maxHeight: 150, // Limit the height of the scroll area for personal details
+        maxHeight: 150, 
         marginHorizontal: 20,
     },
 });

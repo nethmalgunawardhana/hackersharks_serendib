@@ -226,7 +226,6 @@ const styles = StyleSheet.create({
     profileImage: {
         width: 80,
         height: 80,
-        clipPath: 'polygon(50% 0%, 86% 25%, 100% 63%, 75% 100%, 25% 100%, 0% 63%, 14% 25%)',
     },
     name: {
         fontSize: 18,
@@ -350,5 +349,16 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         paddingHorizontal: 10,
         borderRadius: 5,
+    },
+    floatingButton: {
+        backgroundColor: '#ff6f61',
+        width: 50,
+        height: 50,
+        borderRadius: 50 / 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 30,
+        right: 30,
     },
 });

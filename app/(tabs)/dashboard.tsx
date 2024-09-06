@@ -12,7 +12,7 @@ const trips = [
         locations: ['Queens', 'Park', 'Colombo Fort'],
         travelers: 9,
         cost: 'LKR 80,000',
-        image: 'https://via.placeholder.com/150', // Placeholder image URL
+        image: '../assets/images/highland.jpg',
     },
 ];
 
@@ -21,19 +21,19 @@ const upcomingTrips = [
         name: 'NORTHERN HERITAGE',
         date: '30 August 2024',
         locations: ['Jaffna Fort', 'Point Pedro'],
-        image: 'https://via.placeholder.com/150', // Placeholder image URL
+        image: '../assets/images/north.jpg', 
     },
     {
         name: 'EASTERN WONDER',
         date: '5 September 2024',
         locations: ['Trincomalee', 'Batticaloa'],
-        image: 'https://via.placeholder.com/150', // Placeholder image URL
+        image: '../assets/images/easten.jpg', 
     },
 ];
 
 const guides = [
-    { name: 'John Doe', city: 'Colombo', image: 'https://via.placeholder.com/80', rating: 5 },
-    { name: 'James Smith', city: 'French/German', image: 'https://via.placeholder.com/80', rating: 4 },
+    { name: 'John Doe', city: 'Colombo', image: '../assets/images/user.png', rating: 5 },
+    { name: 'James Smith', city: 'French/German', image: '../assets/images/user.png', rating: 4 },
 ];
 
 export default function HomeScreen() {
@@ -131,148 +131,180 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-    },
-    badge: {
-        backgroundColor: '#FFD700',
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-        borderRadius: 15,
-        fontWeight: 'bold',
-        color: '#ffffff',
-    },
-    greeting: {
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    section: {
-        marginBottom: 20,
-    },
-    sectionTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        paddingHorizontal: 20,
-        marginBottom: 10,
-    },
-    tripCard: {
-        backgroundColor: '#e3f2fd',
-        padding: 15,
-        borderRadius: 10,
-        marginHorizontal: 20,
-    },
-    tripCardCarousel: {
-        backgroundColor: '#e3f2fd',
-        padding: 15,
-        borderRadius: 10,
-        width: screenWidth * 0.8,
-        marginLeft: 20,
-    },
-    tripHeader: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    tripName: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        maxWidth: screenWidth * 0.5, // Limit the text width
-    },
-    tripDate: {
-        fontSize: 14,
-        color: '#666666',
-    },
-    tripDetails: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginVertical: 10,
-    },
-    tripDetailItem: {
-        fontSize: 14,
-        color: '#666666',
-    },
-    tripFooter: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    tripFooterItem: {
-        fontSize: 14,
-        color: '#333333',
-    },
-    detailsButton: {
-        color: '#007BFF',
-        fontSize: 14,
-    },
-    guideCard: {
-        backgroundColor: '#f9f9f9', // Background color added
-        padding: 15,
-        borderRadius: 10,
-        alignItems: 'center',
-        width: screenWidth * 0.5,
-        marginLeft: 20,
-    },
-    guideImage: {
-        width: 80,
-        height: 80,
-        borderRadius: 40,
-        marginBottom: 10,
-    },
-    guideName: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginBottom: 5,
-    },
-    guideDetails: {
-        fontSize: 14,
-        color: '#666666',
-        marginBottom: 10,
-        textAlign: 'center',
-    },
-    hireButton: {
-        backgroundColor: '#007BFF',
-        paddingVertical: 8,
-        paddingHorizontal: 20,
-        borderRadius: 20,
-    },
-    hireButtonText: {
-        color: '#ffffff',
-        fontWeight: 'bold',
-    },
-    ratingContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginBottom: 10,
-    },
-    tripImage: {
-        width: '100%',
-        height: 100,
-        borderRadius: 10,
-        marginBottom: 10,
-    },
-    tripImageCarousel: {
-        width: '100%',
-        height: 80,
-        borderRadius: 10,
-        marginBottom: 10,
-    },
-    fab: {
-        position: 'absolute',
-        bottom: 20,
-        right: 20,
-        backgroundColor: '#007BFF',
-        padding: 15,
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});
+        container: {
+            flex: 1,
+            backgroundColor: '#fff', 
+        },
+        header: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingHorizontal: 20,
+            paddingVertical: 10,
+            backgroundColor: '#fff',
+            borderBottomLeftRadius: 20, 
+            borderBottomRightRadius: 20,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 5,
+            elevation: 2, 
+        },
+        badge: {
+            backgroundColor: '#FFD700',
+            paddingVertical: 5,
+            paddingHorizontal: 15,
+            borderRadius: 20, 
+            fontWeight: 'bold',
+            color: '#333333', 
+        },
+        greeting: {
+            fontSize: 22,
+            fontWeight: 'bold',
+            color: '#333', 
+        },
+        section: {
+            marginBottom: 20,
+        },
+        sectionTitle: {
+            fontSize: 18,
+            fontWeight: 'bold',
+            paddingHorizontal: 20,
+            color: '#333', 
+            marginBottom: 10,
+        },
+        tripCard: {
+            backgroundColor: '#FFFFFF', 
+            padding: 20,
+            borderRadius: 15,
+            marginHorizontal: 20,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.2,
+            shadowRadius: 4,
+            elevation: 3,
+        },
+        tripCardCarousel: {
+            backgroundColor: '#FFFFFF',
+            padding: 15,
+            borderRadius: 15,
+            width: screenWidth * 0.8,
+            marginLeft: 20,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.2,
+            shadowRadius: 4,
+            elevation: 3,
+        },
+        tripHeader: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+        },
+        tripName: {
+            fontSize: 16,
+            fontWeight: 'bold',
+            color: '#333333', 
+        },
+        tripDate: {
+            fontSize: 14,
+            color: '#999999', 
+        },
+        tripDetails: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginVertical: 10,
+        },
+        tripDetailItem: {
+            fontSize: 14,
+            color: '#666666',
+        },
+        tripFooter: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+        },
+        tripFooterItem: {
+            fontSize: 14,
+            color: '#333333',
+        },
+        detailsButton: {
+            color: '#007BFF',
+            fontSize: 14,
+            fontWeight: '600', 
+        },
+        guideCard: {
+            backgroundColor: '#FFFFFF',
+            padding: 15,
+            borderRadius: 15,
+            alignItems: 'center',
+            width: screenWidth * 0.5,
+            marginLeft: 20,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.2,
+            shadowRadius: 4,
+            elevation: 3,
+        },
+        guideImage: {
+            width: 80,
+            height: 80,
+            borderRadius: 40,
+            marginBottom: 10,
+        },
+        guideName: {
+            fontSize: 16,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            color: '#333333',
+            marginBottom: 5,
+        },
+        guideDetails: {
+            fontSize: 14,
+            color: '#666666',
+            marginBottom: 10,
+            textAlign: 'center',
+        },
+        hireButton: {
+            backgroundColor: '#007BFF',
+            paddingVertical: 8,
+            paddingHorizontal: 20,
+            borderRadius: 20,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+            elevation: 2,
+        },
+        hireButtonText: {
+            color: '#ffffff',
+            fontWeight: 'bold',
+        },
+        ratingContainer: {
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginBottom: 10,
+        },
+        tripImage: {
+            width: '100%',
+            height: 100,
+            borderRadius: 10,
+            marginBottom: 10,
+        },
+        tripImageCarousel: {
+            width: '100%',
+            height: 80,
+            borderRadius: 10,
+            marginBottom: 10,
+        },
+        fab: {
+            position: 'absolute',
+            bottom: 20,
+            right: 20,
+            backgroundColor: '#007BFF',
+            padding: 15,
+            borderRadius: 30,
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+    });

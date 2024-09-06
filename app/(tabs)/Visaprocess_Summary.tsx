@@ -22,6 +22,17 @@ const ApplicationSummary: React.FC = () => {
 
   const totalFee = feeBreakdown.reduce((sum, fee) => sum + fee.amount, 0);
 
+  const renderFeeDescription = (description: string) => {
+    const parts = description.split('*');
+    return (
+      <Text style={styles.feeDescription}>
+        {parts[0]}
+        <Text style={styles.asterisk}>*</Text>
+        {parts[1] || ''}
+      </Text>
+    );
+  };
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.header}>Application Summary</Text>
@@ -29,7 +40,7 @@ const ApplicationSummary: React.FC = () => {
       <View style={styles.feeTable}>
         {feeBreakdown.map((fee, index) => (
           <View key={index} style={styles.feeRow}>
-            <Text style={styles.feeDescription}>{fee.description}</Text>
+            {renderFeeDescription(fee.description)}
             <Text style={styles.feeAmount}>USD {fee.amount}</Text>
           </View>
         ))}
@@ -91,6 +102,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   feeDescription: {
+    fontSize: 18,
+    fontFamily: 'outrun-future',
+  },
+  asterisk: {
+    color: 'red',
     fontSize: 18,
     fontFamily: 'outrun-future',
   },

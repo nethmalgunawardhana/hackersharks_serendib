@@ -12,7 +12,7 @@ const trips = [
         locations: ['Queens', 'Park', 'Colombo Fort'],
         travelers: 9,
         cost: 'LKR 80,000',
-        image: '../assets/images/highland.jpg',
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/db022c3db5ffba9effddfb4b81d422f2bd2c9d3796d67e0971f695a1f7d93ebc?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf',
     },
 ];
 
@@ -21,19 +21,19 @@ const upcomingTrips = [
         name: 'NORTHERN HERITAGE',
         date: '30 August 2024',
         locations: ['Jaffna Fort', 'Point Pedro'],
-        image: '../assets/images/north.jpg', 
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/02c802d763d41a518ab424acf03d0ed562c8205e9177d17f844ce86f38be140d?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf', 
     },
     {
         name: 'EASTERN WONDER',
         date: '5 September 2024',
         locations: ['Trincomalee', 'Batticaloa'],
-        image: '../assets/images/easten.jpg', 
+        image: 'https://images.squarespace-cdn.com/content/v1/57edf7a1579fb348b1262096/1698177238635-065Z7ASBB5UFXK232UK8/28525-86225.jpeg', 
     },
 ];
 
 const guides = [
-    { name: 'John Doe', city: 'Colombo', image: '../assets/images/user.png', rating: 5 },
-    { name: 'James Smith', city: 'French/German', image: '../assets/images/user.png', rating: 4 },
+    { name: 'John Doe', city: 'Colombo', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/b3bfc0895c2778a938a3610b92b1fdb76884569a81070994efb0931b510e3d61?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf', rating: 5 },
+    { name: 'James Smith', city: 'French/German', image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/b3bfc0895c2778a938a3610b92b1fdb76884569a81070994efb0931b510e3d61?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf', rating: 4 },
 ];
 
 export default function HomeScreen() {

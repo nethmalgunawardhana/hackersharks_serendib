@@ -8,6 +8,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 type RootStackParamList = {
   Eligibility: undefined;
   UploadFile: undefined;
+  ProfileScreen: undefined;
 
 };
 
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 48,
-    fontFamily: 'outrun-future',
+   
     fontWeight: 'bold',
     marginBottom: 20,
   },
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 24,
-    fontFamily: 'outrun-future',
+  
     fontWeight: 'semibold',
     marginBottom: 5,
   },

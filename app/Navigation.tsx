@@ -6,6 +6,8 @@ import PassportDetails from './(tabs)/Visaprocess_Passport';
 import ContactDetails from './(tabs)/Visaprocess_Contactform';
 import AdditionalDetails from './(tabs)/Visaprocess_Additional';
 import ApplicationSummary from './(tabs)/Visaprocess_Summary';
+import SettingsScreen from './(tabs)/setting';
+import ProfileScreen from './(tabs)/profile';
 import MenuBar from './(tabs)/MenuBar';  
 import RegistrationScreen from './signin';
 import SplashScreen from './splash';
@@ -22,12 +24,7 @@ const NewStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
     
-      <Stack.Screen name="Eligibility" component={VisaProcessEligible} />
-      <Stack.Screen name="UploadFile" component={VisaProcessUpload} />
-      <Stack.Screen name="Passport" component={PassportDetails} />
-      <Stack.Screen name="Contact" component={ContactDetails} />
-      <Stack.Screen name="Additional" component={AdditionalDetails} />
-      <Stack.Screen name="Summary" component={ApplicationSummary} />
+
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
@@ -36,6 +33,14 @@ const NewStack = () => {
       <Stack.Screen name="Passwordreset" component={PasswordResetScreen} />
       <Stack.Screen name="Fogotpassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="Main" component={MenuBar} />
+      <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+      <Stack.Screen name="ProfileScreen" component={ProfileScreen} /> 
+      <Stack.Screen name="Eligibility" component={VisaProcessEligible} />
+      <Stack.Screen name="UploadFile" component={VisaProcessUpload} />
+      <Stack.Screen name="Passport" component={PassportDetails} />
+      <Stack.Screen name="Contact" component={ContactDetails} />
+      <Stack.Screen name="Additional" component={AdditionalDetails} />
+      <Stack.Screen name="Summary" component={ApplicationSummary} />
     </Stack.Navigator>
   );
 };

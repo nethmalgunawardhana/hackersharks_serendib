@@ -216,13 +216,13 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 48,
-    fontFamily: 'outrun-future',
+    
     fontWeight: 'bold',
     marginBottom: 20,
   },
   label: {
     fontSize: 24,
-    fontFamily: 'outrun-future',
+    
     fontWeight: 'semibold',
     marginBottom: 5,
   },
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     height: 50,
     color: '#7D7777',
-    fontFamily: 'outrun-future',
+    
     fontSize: 22,
     paddingLeft: 10,
   },
@@ -252,12 +252,12 @@ const styles = StyleSheet.create({
   },
   placeholderText: {
     color: '#7D7777',
-    fontFamily: 'outrun-future',
+    
     fontSize: 22,
   },
   dateText: {
     color: '#000',
-    fontFamily: 'outrun-future',
+    
     fontSize: 22,
   },
   pickerContainer: {
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
   picker: {
     height: 50,
     color: '#7D7777',
-    fontFamily: 'outrun-future',
+    
     fontSize: 22,
     paddingLeft: 10,
   },

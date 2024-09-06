@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 48,
-    fontFamily: 'outrun-future',
+   
     fontWeight: 'bold',
     marginBottom: 20,
   },
@@ -92,11 +92,11 @@ const styles = StyleSheet.create({
   },
   feeDescription: {
     fontSize: 18,
-    fontFamily: 'outrun-future',
+   
   },
   feeAmount: {
     fontSize: 18,
-    fontFamily: 'outrun-future',
+   
     fontWeight: 'bold',
   },
   totalRow: {
@@ -109,12 +109,12 @@ const styles = StyleSheet.create({
   },
   totalText: {
     fontSize: 20,
-    fontFamily: 'outrun-future',
+  
     fontWeight: 'bold',
   },
   totalAmount: {
     fontSize: 20,
-    fontFamily: 'outrun-future',
+   
     fontWeight: 'bold',
     color: '#008000',
   },
@@ -128,18 +128,18 @@ const styles = StyleSheet.create({
   },
   grandTotalText: {
     fontSize: 22,
-    fontFamily: 'outrun-future',
+  
     fontWeight: 'bold',
   },
   grandTotalAmount: {
     fontSize: 22,
-    fontFamily: 'outrun-future',
+  
     fontWeight: 'bold',
     color: '#008000',
   },
   declarationText: {
     fontSize: 16,
-    fontFamily: 'outrun-future',
+    
     marginBottom: 20,
     lineHeight: 24,
   },
@@ -157,17 +157,17 @@ const styles = StyleSheet.create({
   },
   checkboxLabel: {
     fontSize: 16,
-    fontFamily: 'outrun-future',
+   
   },
   sectionHeader: {
     fontSize: 20,
-    fontFamily: 'outrun-future',
+   
     fontWeight: 'bold',
     marginBottom: 10,
   },
   documentText: {
     fontSize: 16,
-    fontFamily: 'outrun-future',
+  
     marginBottom: 20,
     lineHeight: 24,
   },
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 22,
     fontWeight: 'semibold',
-    fontFamily: 'outrun-future',
+  
   },
 });
 

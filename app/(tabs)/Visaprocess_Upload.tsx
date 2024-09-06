@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 48,
-    fontFamily: 'outrun-future',
+    
     fontWeight: 'bold',
     marginBottom: 20,
   },
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   topic: {
     fontSize: 26,
-    fontFamily: 'outrun-future',
+    
     fontWeight: 'semibold',
     marginBottom: 10,
     color: '#777'

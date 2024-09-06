@@ -101,7 +101,7 @@ const renderDateField = (label: string, field: keyof PassportDetails & keyof typ
 
 
 return (
-    <ScrollView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <Text style={styles.header}>Passport Details</Text>
 
         <Text style={styles.label}>Passport Number<Text style={{color: 'red'}}>*</Text></Text>
@@ -209,13 +209,16 @@ container: {
 },
 header: {
     fontSize: 48,
-    fontFamily: 'outrun-future',
+  
     fontWeight: 'bold',
     marginBottom: 20,
   },
+  scrollViewContent: {
+    paddingBottom: 86,
+  },
 label: {
     fontSize: 24,
-    fontFamily: 'outrun-future',
+  
     fontWeight: 'semibold',
     marginBottom: 5,
   },
@@ -227,7 +230,7 @@ input: {
     marginBottom: 10,
     height: 50,
     color: '#7D7777',
-    fontFamily: 'outrun-future',
+   
     fontSize: 22,
     paddingLeft: 10,
 },
@@ -240,12 +243,12 @@ dateInput: {
 },
 placeholderText: {
     color: '#7D7777',
-    fontFamily: 'outrun-future',
+
     fontSize: 22,
 },
 dateText: {
     color: '#000',
-    fontFamily: 'outrun-future',
+  
     fontSize: 22,
 },
 pickerContainer: {
@@ -257,7 +260,7 @@ pickerContainer: {
 picker: {
     height: 50,
     color: '#7D7777',
-    fontFamily: 'outrun-future',
+  
     fontSize: 22,
     paddingLeft: 10,
   },

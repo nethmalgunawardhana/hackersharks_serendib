@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 48,
-    fontFamily: 'outrun-future',
+   
     fontWeight: 'bold',
     marginBottom: 20,
   },
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 24,
-    fontFamily: 'outrun-future',
+  
     fontWeight: 'semibold',
     marginBottom: 5,
   },
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     height: 50,
     paddingHorizontal: 10,
     fontSize: 22,
-    fontFamily: 'outrun-future',
+   
   },
   pickerContainer: {
     borderWidth: 1,
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   picker: {
     height: 50,
     color: '#7D7777',
-    fontFamily: 'outrun-future',
+  
     fontSize: 22,
   },
   button: {

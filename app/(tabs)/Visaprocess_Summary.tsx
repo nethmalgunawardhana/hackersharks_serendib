@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   asterisk: {
     color: 'red',
     fontSize: 18,
-    fontFamily: 'outrun-future',
+    
   },
   feeAmount: {
     fontSize: 18,

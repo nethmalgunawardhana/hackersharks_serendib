@@ -27,9 +27,9 @@ const guides: Guide[] = [
     location: 'Jaffna',
     totalTrips: 15,
     telephone: '+94 77 4688 714',
-    email: 'rangasaman1990@gmail.com',
+    email: 'rangasan1990@gmail.com',
     ratePerHour: '7$ per Hour',
-    image: 'https://example.com/guide1.jpg',
+    image: '../assets/images/user.png',
     rating: 4.5,
   },
   {
@@ -42,31 +42,60 @@ const guides: Guide[] = [
     telephone: '+94 77 4688 714',
     email: 'rangasaman1990@gmail.com',
     ratePerHour: '10$ per Hour',
-    image: 'https://example.com/guide2.jpg',
+    image: '../assets/images/user.png',
     rating: 4.5,
   },
 ];
 
+// const GuideCard: React.FC<{ guide: Guide }> = ({ guide }) => (
+//   <View style={styles.guideCard}>
+//     <Image source={{ uri: guide.image }} style={styles.guideImage} />
+//     <View style={styles.guideInfo}>
+//       <Text style={styles.guideName}>{guide.name}</Text>
+//       <Text style={styles.guideDetails}>Language: {guide.languages} Age: {guide.age} years</Text>
+//       <Text style={styles.guideDetails}>Base Location: {guide.location}</Text>
+//       <Text style={styles.guideDetails}>Total Trips: {guide.totalTrips}</Text>
+//       <View style={styles.ratingContainer}>
+//         <Text style={styles.ratingText}>{guide.rating}</Text>
+//         <Icon name="star" type="material" color="#FFD700" size={18} />
+//       </View>
+//       <Text style={styles.guideContact}>Telephone: {guide.telephone}</Text>
+//       <Text style={styles.guideContact}>Email: {guide.email}</Text>
+//       <Text style={styles.ratePerHour}>{guide.ratePerHour}</Text>
+//     </View>
+//     <TouchableOpacity style={styles.hireButton}>
+//       <Text style={styles.hireButtonText}>HIRE NOW</Text>
+//       <Icon name="arrow-right" type="material-community" color="#fff" size={18} />
+//     </TouchableOpacity>
+//   </View>
+// );
+
 const GuideCard: React.FC<{ guide: Guide }> = ({ guide }) => (
   <View style={styles.guideCard}>
-    <Image source={{ uri: guide.image }} style={styles.guideImage} />
-    <View style={styles.guideInfo}>
-      <Text style={styles.guideName}>{guide.name}</Text>
-      <Text style={styles.guideDetails}>Language: {guide.languages} Age: {guide.age} years</Text>
-      <Text style={styles.guideDetails}>Base Location: {guide.location}</Text>
-      <Text style={styles.guideDetails}>Total Trips: {guide.totalTrips}</Text>
-      <View style={styles.ratingContainer}>
-        <Text style={styles.ratingText}>{guide.rating}</Text>
-        <Icon name="star" type="material" color="#FFD700" size={18} />
+    <View style={styles.guideContent}>
+      <Image source={{ uri: guide.image }} style={styles.guideImage} />
+      <View style={styles.guideInfo}>
+        <Text style={styles.guideName}>{guide.name}</Text>
+        <Text style={styles.guideDetails}>Language: {guide.languages} Age: {guide.age} years</Text>
+        <Text style={styles.guideDetails}>Base Location: {guide.location}</Text>
+        <View style={styles.ratingContainer}>
+          <Text style={styles.ratingText}>{guide.rating}</Text>
+          <Icon name="star" type="material" color="#FFD700" size={18} />
+        </View>
       </View>
-      <Text style={styles.guideContact}>Telephone: {guide.telephone}</Text>
-      <Text style={styles.guideContact}>Email: {guide.email}</Text>
-      <Text style={styles.ratePerHour}>{guide.ratePerHour}</Text>
     </View>
-    <TouchableOpacity style={styles.hireButton}>
-      <Text style={styles.hireButtonText}>HIRE NOW</Text>
-      <Icon name="arrow-right" type="material-community" color="#fff" size={18} />
-    </TouchableOpacity>
+
+    <View style={styles.contactContainer}>
+      <View style={styles.guideContactContainer}>
+        <Text style={styles.guideContact}>Telephone: {guide.telephone}</Text>
+        <Text style={styles.guideContact}>Email: {guide.email}</Text>
+        <Text style={styles.ratePerHour}>{guide.ratePerHour}</Text>
+      </View>
+      <TouchableOpacity style={styles.hireButton}>
+        <Text style={styles.hireButtonText}>HIRE NOW</Text>
+        <Icon name="arrow-right" type="material-community" color="#fff" size={18} />
+      </TouchableOpacity>
+    </View>
   </View>
 );
 
@@ -98,22 +127,32 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   header: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     marginVertical: 10,
+    textAlign: 'left',
+    marginBottom: 20,
   },
   scrollViewContent: {
-    paddingBottom: 115, 
+    paddingBottom: 115,
   },
   guideCard: {
     backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 16,
-    marginBottom: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 15,
     borderColor: '#00BFFF',
     borderWidth: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+    margin:5,
+  },
+  guideContent: {
+    flexDirection: 'row', 
+    alignItems: 'flex-start',
   },
   guideImage: {
     width: 80,
@@ -127,66 +166,83 @@ const styles = StyleSheet.create({
   guideName: {
     fontSize: 16,
     fontWeight: 'bold',
+    marginBottom: 4,
   },
   guideDetails: {
-    fontSize: 14,
-    color: '#666',
+    fontSize: 13,
+    color: '#555',
   },
   ratingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 5,
+    marginTop: 4,
   },
   ratingText: {
-    fontSize: 14,
-    marginRight: 5,
+    fontSize: 13,
+    marginRight: 4,
+  },
+  contactContainer: {
+    flexDirection: 'row', 
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
+  guideContactContainer: {
+    flex: 1,
   },
   guideContact: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#666',
-    marginTop: 5,
+    marginTop: 4,
   },
   ratePerHour: {
     fontSize: 14,
     color: '#FF6347',
-    marginTop: 5,
+    marginTop: 6,
+    fontWeight: 'bold',
   },
   hireButton: {
     backgroundColor: '#00BFFF',
     borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
     flexDirection: 'row',
     alignItems: 'center',
   },
   hireButtonText: {
     color: '#fff',
     fontWeight: 'bold',
-    marginRight: 10,
+    marginRight: 8,
+    fontSize: 14,
   },
   searchContainer: {
-    backgroundColor: '#f5f5f5',
-    borderRadius: 10,
-    padding: 16,
-    marginTop: 20,
+    backgroundColor: '#F5F5F5',
+    borderRadius: 15,
+    padding: 20,
+    marginTop: 30,
+    borderColor: '#D3D3D3',
+    borderWidth: 1,
   },
   searchInput: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 10,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    padding: 12,
     marginBottom: 10,
-    borderColor: '#ddd',
+    borderColor: '#CCCCCC',
     borderWidth: 1,
+    fontSize: 14,
+    color: '#333333',
   },
   searchButton: {
     backgroundColor: '#00BFFF',
     borderRadius: 10,
-    paddingVertical: 10,
+    paddingVertical: 14,
     alignItems: 'center',
+    marginTop: 10,
   },
   searchButtonText: {
-    color: '#fff',
+    color: '#FFFFFF',
     fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 

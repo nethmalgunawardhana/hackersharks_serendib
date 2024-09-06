@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   picker: {
     height: 50,
     color: '#7D7777',
-    fontFamily: 'outrun-future',
+   
     fontSize: 22,
     paddingLeft: 10,
   },

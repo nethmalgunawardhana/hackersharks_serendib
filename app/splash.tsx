@@ -19,13 +19,13 @@ const SplashScreen: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
       <ImageBackground
-        source={{ uri: 'https://example.com/path-to-your-background-image.jpg' }}
+        source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/e5e03bd00f918d2addee2726a8def0d04574e8d88370f17d21d44ded7cdfe49e?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf' }}
         style={styles.backgroundImage}
       >
         <View style={styles.content}>
           <View style={styles.logoContainer}>
             <Image
-              source={{ uri: 'https://example.com/path-to-your-logo.png' }}
+              source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/0fdab022b9c82481f581d670c9a808e2f7d25628f3d2005ec15165f455ec9eef?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf' }}
               style={styles.logo}
             />
           </View>

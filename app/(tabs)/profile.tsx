@@ -1,22 +1,118 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Ionicons, FontAwesome } from '@expo/vector-icons'; // Import FontAwesome for better icon options
-import { useNavigation } from '@react-navigation/native'; // Navigation for settings
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Modal, TextInput } from 'react-native';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type RootStackParamList = { 
+    SettingsScreen: undefined;
+    ProfileScreen: undefined;
+    Eligibility: undefined;
+};
+type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList, 'ProfileScreen'>;
 
 export default function ProfileScreen() {
-    const navigation = useNavigation(); // Hook to handle navigation
+    const navigation = useNavigation<ProfileScreenNavigationProp>();
+
+    const [showVisaQuestion, setShowVisaQuestion] = useState(false);
+    const [showVisaNumberEntry, setShowVisaNumberEntry] = useState(false);
+    const [showOTPVerification, setShowOTPVerification] = useState(false);
+    const [showVisaDetails, setShowVisaDetails] = useState(false);
+    const VisaQuestionPopup = () => (
+        <Modal visible={showVisaQuestion} transparent={true} animationType="fade">
+            <View style={styles.modalOverlay}>
+                <View style={styles.modalContent}>
+                    <Text style={styles.modalTitle}>Do you already have a visa?</Text>
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.modalButton} onPress={() => setShowVisaQuestion(false)}>
+                            <Text style={styles.modalButtonText}>Yes</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.modalButton} onPress={() => {
+                            setShowVisaQuestion(false);
+                            setShowVisaNumberEntry(true);
+                        }}>
+                            <Text style={styles.modalButtonText}>No</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+        </Modal>
+    );
+
+    const VisaNumberEntryPopup = () => (
+        <Modal visible={showVisaNumberEntry} transparent={true} animationType="fade">
+            <View style={styles.modalOverlay}>
+                <View style={styles.modalContent}>
+                    <Text style={styles.modalTitle}>Enter your visa number</Text>
+                    <TextInput style={styles.input} placeholder="Visa number" />
+                    <TouchableOpacity style={styles.modalButton} onPress={() => {
+                        setShowVisaNumberEntry(false);
+                        setShowOTPVerification(true);
+                    }}>
+                        <Text style={styles.modalButtonText}>Continue</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </Modal>
+    );
+
+    const OTPVerificationPopup = () => (
+        <Modal visible={showOTPVerification} transparent={true} animationType="fade">
+            <View style={styles.modalOverlay}>
+                <View style={styles.modalContent}>
+                    <Text style={styles.modalTitle}>OTP Verification</Text>
+                    <TextInput style={styles.input} placeholder="Mobile Number" />
+                    <TouchableOpacity style={styles.modalButton}>
+                        <Text style={styles.modalButtonText}>Get Code</Text>
+                    </TouchableOpacity>
+                    <TextInput style={styles.input} placeholder="OTP Number" />
+                    <TouchableOpacity 
+                        style={styles.modalButton} 
+                        onPress={() => {
+                            setShowOTPVerification(false);
+                            setShowVisaDetails(true);
+                        }}
+                    >
+                        <Text style={styles.modalButtonText}>Verify</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </Modal>
+    );
+
+    const VisaDetailsPopup = () => (
+        <Modal visible={showVisaDetails} transparent={true} animationType="fade">
+            <View style={styles.modalOverlay}>
+                <View style={styles.modalContent}>
+                    <Text style={styles.modalTitle}>Visa Details</Text>
+                    <View style={styles.visaDetailsContainer}>
+                        <Text style={styles.visaDetailText}>Name: Mathew Drew</Text>
+                        <Text style={styles.visaDetailText}>Duration: 30 Days</Text>
+                        <Text style={styles.visaDetailText}>Visa Type: Tourist</Text>
+                        <Text style={styles.visaDetailText}>Visa Number: 119036</Text>
+                    </View>
+                    <TouchableOpacity 
+                        style={styles.modalButton}
+                        onPress={() => {
+                            setShowVisaDetails(false);
+                            navigation.navigate('Eligibility');
+                        }}>
+                        <Text style={styles.modalButtonText}>Continue</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </Modal>
+    );
 
     return (
         <View style={styles.container}>
-            {/* Settings Icon at the top-right corner of the screen */}
             <TouchableOpacity
                 style={styles.settingsIcon}
-                onPress={() => navigation.navigate('SettingsScreen')} // Navigate to Settings screen
+                onPress={() => navigation.navigate('SettingsScreen')}
             >
                 <Ionicons name="settings-outline" size={28} color="black" />
             </TouchableOpacity>
 
-            {/* User Profile Card */}
             <View style={styles.profileContainer}>
                 <Image
                     style={styles.profileImage}
@@ -31,7 +127,6 @@ export default function ProfileScreen() {
                     <Text style={styles.countryName}>Germany</Text>
                 </View>
 
-                {/* Stats Container */}
                 <View style={styles.statsContainer}>
                     <View style={styles.statItem}>
                         <Ionicons name="airplane-outline" size={24} color="blue" />
@@ -51,17 +146,24 @@ export default function ProfileScreen() {
                 </View>
             </View>
 
-            {/* Visa Details */}
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>Visa Details</Text>
                 <View style={styles.detailsContainer}>
-                    <Text style={styles.detailsText}>Visa Type: 1 Year Multiple Entry</Text>
-                    <Text style={styles.detailsText}>Duration: 30 days</Text>
-                    <Text style={styles.detailsText}>Visa No: 111111</Text>
+                    <Text style={styles.noVisaText}>You have not added any visa details.</Text>
+                    <TouchableOpacity 
+                        style={styles.processVisaButton} 
+                        onPress={() => setShowVisaQuestion(true)}
+                    >
+                        <Text style={styles.processVisaButtonText}>Add</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 
-            {/* Scrollable Personal Details */}
+            <VisaQuestionPopup />
+            <VisaNumberEntryPopup />
+            <OTPVerificationPopup />
+            <VisaDetailsPopup />
+           
             <ScrollView style={styles.personalDetailsScroll}>
                 <Text style={styles.sectionTitle}>Personal Details</Text>
                 <View style={styles.detailsContainer}>
@@ -81,28 +183,40 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#f5f5f5',
     },
+
+    visaDetailsContainer: {
+        backgroundColor: '#f0f0f0',
+        padding: 15,
+        borderRadius: 5,
+        marginBottom: 15,
+        width: '100%',
+    },
+    visaDetailText: {
+        fontSize: 16,
+        marginBottom: 5,
+    },
     settingsIcon: {
         position: 'absolute',
-        top: 40,  // Adjust as needed for padding
-        right: 20, // Adjust as needed for padding
+        top: 40,
+        right: 20,
         zIndex: 1,
     },
     profileContainer: {
         backgroundColor: '#e3f2fd',
         alignItems: 'center',
-        paddingVertical: 10, // Reduce padding to make more space
+        paddingVertical: 10,
         paddingHorizontal: 15,
         borderRadius: 10,
         marginHorizontal: 20,
-        marginTop: 10, // Reduce top margin to make more space
+        marginTop: 10,
     },
     profileImage: {
-        width: 70, // Reduce image size to save space
+        width: 70,
         height: 70,
         borderRadius: 35,
     },
     name: {
-        fontSize: 18, // Adjust font size
+        fontSize: 18,
         fontWeight: 'bold',
         marginVertical: 5,
     },
@@ -116,29 +230,29 @@ const styles = StyleSheet.create({
         marginRight: 5,
     },
     countryName: {
-        fontSize: 14, // Adjust font size for better alignment
+        fontSize: 14,
     },
     statsContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around', // Spread the items evenly
+        justifyContent: 'space-around',
         marginTop: 10,
-        width: '100%', // Take full width for better spacing
+        width: '100%',
     },
     statItem: {
         alignItems: 'center',
     },
     statNumber: {
-        fontSize: 14, // Adjust font size
+        fontSize: 14,
         fontWeight: 'bold',
         marginTop: 3,
     },
     statLabel: {
-        fontSize: 12, // Adjust font size for better spacing
+        fontSize: 12,
         color: '#666',
     },
     section: {
         marginHorizontal: 20,
-        marginVertical: 10, // Add some vertical spacing between sections
+        marginVertical: 10,
     },
     sectionTitle: {
         fontSize: 18,
@@ -160,7 +274,68 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     personalDetailsScroll: {
-        maxHeight: 150, // Limit the height of the scroll area for personal details
+        maxHeight: 150,
         marginHorizontal: 20,
+    },
+    noVisaText: {
+        fontSize: 16,
+        color: '#666',
+        marginBottom: 10,
+    },
+    processVisaButton: {
+        backgroundColor: '#1E90FF',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+    },
+    processVisaButtonText: {
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    modalOverlay: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        width: '80%',
+    },
+    modalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 15,
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '100%',
+    },
+    modalButton: {
+        backgroundColor: '#1E90FF',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+        marginTop: 10,
+        minWidth: 100,
+    },
+    modalButtonText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    input: {
+        width: '100%',
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginVertical: 10,
+        paddingHorizontal: 10,
+        borderRadius: 5,
     },
 });

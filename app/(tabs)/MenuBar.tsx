@@ -10,31 +10,22 @@ import TopGuides from './TourGuide';
 import HomeScreen from './dashboard';
 
 
-const Tab = createBottomTabNavigator();
-
-
-
-
+// Remove the duplicate declaration of 'Tab'
+// const Tab = createBottomTabNavigator();
 
 const CustomTabBarButton = ({ children, onPress }) => (
     <TouchableOpacity
-        style={{
-            top: -30,
-            justifyContent: 'center',
-            alignItems: 'center',
-        }}
+        style={styles.customTabBarButton}
         onPress={onPress}
     >
-        <View style={{
-            width: 70,
-            height: 70,
-            borderRadius: 35,
-            backgroundColor: '#FF9500',
-        }}>
+        <View style={styles.customButtonBackground}>
             {children}
         </View>
     </TouchableOpacity>
+
 );
+
+const Tab = createBottomTabNavigator();
 
 const MenuBar = () => {
     const navigation = useNavigation();
@@ -42,16 +33,10 @@ const MenuBar = () => {
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
-                tabBarStyle: {
-                    position: 'absolute',
-                    bottom: 25,
-                    left: 20,
-                    right: 20,
-                    elevation: 0,
-                    backgroundColor: '#E6F3F5',
-                    borderRadius: 15,
-                    height: 90,
-                }
+
+                tabBarStyle: styles.tabBarStyle,
+                headerShown: false
+
             }}
         >
             <Tab.Screen name="Home" component={HomeScreen} options={{
@@ -91,11 +76,31 @@ const MenuBar = () => {
 }
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
+    tabBarStyle: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        elevation: 0,
+        backgroundColor: '#E6F3F5',
+        borderRadius: 15,
+        height: 90,
+        paddingBottom: 10, 
+    },
+    customTabBarButton: {
+        top: -30,
         justifyContent: 'center',
         alignItems: 'center',
     },
+    customButtonBackground: {
+        width: 70,
+        height: 70,
+        borderRadius: 35,
+        backgroundColor: '#FF9500',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    }
 });
 
 export default MenuBar;

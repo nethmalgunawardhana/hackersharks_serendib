@@ -1,29 +1,47 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type RootStackParamList = {
+  Splash: undefined;
+  Registration: undefined;
+  Login: undefined;
+};
+
+type SplashScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Splash'>;  
 
 const SplashScreen: React.FC = () => {
+  const navigation = useNavigation<SplashScreenNavigationProp>();
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
       <ImageBackground
-        source={{ uri: 'https://example.com/path-to-your-background-image.jpg' }}
+        source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/e5e03bd00f918d2addee2726a8def0d04574e8d88370f17d21d44ded7cdfe49e?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf' }}
         style={styles.backgroundImage}
       >
         <View style={styles.content}>
           <View style={styles.logoContainer}>
             <Image
-              source={{ uri: 'https://example.com/path-to-your-logo.png' }}
+              source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/0fdab022b9c82481f581d670c9a808e2f7d25628f3d2005ec15165f455ec9eef?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf' }}
               style={styles.logo}
             />
           </View>
           <Text style={styles.welcomeText}>
             Welcome to the one stop for your travel needs in Sri Lanka
           </Text>
-          <TouchableOpacity style={styles.createAccountButton}>
+          <TouchableOpacity 
+            style={styles.createAccountButton} 
+            onPress={() => navigation.navigate('Registration')}
+          >
             <Text style={styles.buttonText}>Create an Account</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity 
+            style={styles.loginButton} 
+            onPress={() => navigation.navigate('Login')}
+          >
             <Text style={styles.buttonText}>Already have an account</Text>
           </TouchableOpacity>
         </View>

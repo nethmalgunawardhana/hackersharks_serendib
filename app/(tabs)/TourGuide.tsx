@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     margin:5,
   },
   guideContent: {
-    flexDirection: 'row', // Places image and content side by side
+    flexDirection: 'row', 
     alignItems: 'flex-start',
   },
   guideImage: {
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
   contactContainer: {
-    flexDirection: 'row', // This ensures that contact info and button are in the same row
+    flexDirection: 'row', 
     justifyContent: 'space-between',
     marginTop: 10,
   },

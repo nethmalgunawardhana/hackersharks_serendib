@@ -21,13 +21,13 @@ const upcomingTrips = [
         name: 'NORTHERN HERITAGE',
         date: '30 August 2024',
         locations: ['Jaffna Fort', 'Point Pedro'],
-        image: '../assets/images/north.jpg', // Placeholder image URL
+        image: '../assets/images/north.jpg', 
     },
     {
         name: 'EASTERN WONDER',
         date: '5 September 2024',
         locations: ['Trincomalee', 'Batticaloa'],
-        image: '../assets/images/easten.jpg', // Placeholder image URL
+        image: '../assets/images/easten.jpg', 
     },
 ];
 
@@ -142,26 +142,26 @@ const styles = StyleSheet.create({
             paddingHorizontal: 20,
             paddingVertical: 10,
             backgroundColor: '#fff',
-            borderBottomLeftRadius: 20, // Rounded corner for the header
+            borderBottomLeftRadius: 20, 
             borderBottomRightRadius: 20,
             shadowColor: '#000',
             shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 0.1,
             shadowRadius: 5,
-            elevation: 2, // Shadow effect for Android
+            elevation: 2, 
         },
         badge: {
             backgroundColor: '#FFD700',
             paddingVertical: 5,
             paddingHorizontal: 15,
-            borderRadius: 20, // Fully rounded badge
+            borderRadius: 20, 
             fontWeight: 'bold',
-            color: '#333333', // Darker text color
+            color: '#333333', 
         },
         greeting: {
-            fontSize: 22, // Slightly larger font
+            fontSize: 22,
             fontWeight: 'bold',
-            color: '#333', // Darker text
+            color: '#333', 
         },
         section: {
             marginBottom: 20,
@@ -170,11 +170,11 @@ const styles = StyleSheet.create({
             fontSize: 18,
             fontWeight: 'bold',
             paddingHorizontal: 20,
-            color: '#333', // Darker title color
+            color: '#333', 
             marginBottom: 10,
         },
         tripCard: {
-            backgroundColor: '#FFFFFF', // White card background
+            backgroundColor: '#FFFFFF', 
             padding: 20,
             borderRadius: 15,
             marginHorizontal: 20,
@@ -204,11 +204,11 @@ const styles = StyleSheet.create({
         tripName: {
             fontSize: 16,
             fontWeight: 'bold',
-            color: '#333333', // Darker text
+            color: '#333333', 
         },
         tripDate: {
             fontSize: 14,
-            color: '#999999', // Lighter text for date
+            color: '#999999', 
         },
         tripDetails: {
             flexDirection: 'row',
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
         detailsButton: {
             color: '#007BFF',
             fontSize: 14,
-            fontWeight: '600', // Bold font for details button
+            fontWeight: '600', 
         },
         guideCard: {
             backgroundColor: '#FFFFFF',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, KeyboardAvoidingView, Platform, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, KeyboardAvoidingView, Platform, Alert, ImageBackground } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
@@ -47,9 +47,9 @@ const RegistrationScreen: React.FC = () => {
   return (
       <SafeAreaView style={styles.container}>
         <StatusBar style="auto" />
-        <LinearGradient
-            colors={['#87CEEB', '#20B2AA']}
-            style={styles.background}
+        <ImageBackground
+          source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/01c7fb320140bb6964cfcc1a0c795df384b3e1a58c4e3a166ea034d2f740e5ac?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf' }} // Replace with your image URL or require your local asset
+          style={styles.backgroundImage}
         >
           <KeyboardAvoidingView
               behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -98,13 +98,50 @@ const RegistrationScreen: React.FC = () => {
               <Text style={styles.buttonText}>Create</Text>
             </TouchableOpacity>
           </KeyboardAvoidingView>
-        </LinearGradient>
+          </ImageBackground>  
       </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   // ... (styles remain the same)
+  container: {
+    flex: 1,
+  },
+ 
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+  formContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+    marginBottom: 20,
+  },
+  input: {
+    backgroundColor: 'white',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+  },
+  button: {
+    backgroundColor: 'yellow',
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'black',
+    fontWeight: 'bold',
+  },
 });
 
 export default RegistrationScreen;

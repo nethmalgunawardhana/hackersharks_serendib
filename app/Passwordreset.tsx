@@ -28,7 +28,7 @@ const handleReset = () => {
  const navigation = useNavigation<PasswordResetScreenProp>();
   return (
     <ImageBackground
-    source={{ uri: 'https://example.com/your-background-image.jpg' }}
+    source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/69c16e96c213d1c28ab5ebb4c15bd12895d50e633cb74f021d38f7160a819d01?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf' }}
       style={styles.backgroundImage}
     >
       <LinearGradient

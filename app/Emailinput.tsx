@@ -19,7 +19,7 @@ const EmailInputScreen: React.FC = () => {
  const navigation = useNavigation<EmailInputScreenProp>();
   return (
     <ImageBackground
-    source={{ uri: 'https://example.com/your-background-image.jpg' }}
+    source={{ uri: 'https://cdn.builder.io/api/v1/image/assets/TEMP/88c4253418c5f6659aea5dccf8b46e228bc553fa0aa37b6c09317e928d13dc00?placeholderIfAbsent=true&apiKey=3efecf631c114a9d8587bb6512f6adcf' }}
       style={styles.backgroundImage}
     >
       <LinearGradient

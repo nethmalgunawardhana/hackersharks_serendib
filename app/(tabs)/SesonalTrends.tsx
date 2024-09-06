@@ -144,9 +144,9 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    marginHorizontal: 8, // Add horizontal margin for spacing
+    marginHorizontal: 8, 
     overflow: 'hidden',
-    width: 200, // Ensure the width is consistent
+    width: 200, 
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,

@@ -351,4 +351,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         borderRadius: 5,
     },
+    floatingButton: {
+        backgroundColor: '#ff6f61',
+        width: 50,
+        height: 50,
+        borderRadius: 50 / 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 30,
+        right: 30,
+    },
 });

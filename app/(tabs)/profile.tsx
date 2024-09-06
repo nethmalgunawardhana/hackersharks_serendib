@@ -16,10 +16,12 @@ export default function ProfileScreen() {
             </TouchableOpacity>
 
             <View style={styles.profileContainer}>
-                <Image
-                    style={styles.profileImage}
-                    source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }}
-                />
+                <View style={styles.hexagonContainer}>
+                    <Image
+                        style={styles.profileImage}
+                        source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }}
+                    />
+                </View>
                 <Text style={styles.name}>Patrick Harris</Text>
                 <View style={styles.countryContainer}>
                     <Image
@@ -53,7 +55,7 @@ export default function ProfileScreen() {
                 <View style={styles.detailsContainer}>
                     <Text style={styles.noVisaText}>You have not added any visa details.</Text>
                     <TouchableOpacity style={styles.processVisaButton} onPress={() => console.log('Process Visa')}>
-                        <Text style={styles.processVisaButtonText}>Process Visa</Text>
+                        <Text style={styles.processVisaButtonText}>Add Visa</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -68,6 +70,10 @@ export default function ProfileScreen() {
                     <Text style={styles.detailsText}>Passport No: 6162626261616161</Text>
                 </View>
             </ScrollView>
+
+            <TouchableOpacity style={styles.floatingButton}>
+                <Ionicons name="add-outline" size={28} color="white" />
+            </TouchableOpacity>
         </View>
     );
 }
@@ -92,10 +98,17 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginTop: 10,
     },
+    hexagonContainer: {
+        width: 100,
+        height: 100,
+        backgroundColor: 'transparent',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     profileImage: {
-        width: 70,
-        height: 70,
-        borderRadius: 35,
+        width: 80,
+        height: 80,
+        clipPath: 'polygon(50% 0%, 86% 25%, 100% 63%, 75% 100%, 25% 100%, 0% 63%, 14% 25%)',
     },
     name: {
         fontSize: 18,
@@ -174,5 +187,16 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         fontSize: 16,
         fontWeight: 'bold',
+    },
+    floatingButton: {
+        backgroundColor: '#ff6f61',
+        width: 50,
+        height: 50,
+        borderRadius: 50 / 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 30,
+        right: 30,
     },
 });

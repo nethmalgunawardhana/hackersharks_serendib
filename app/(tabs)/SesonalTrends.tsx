@@ -20,13 +20,13 @@ const eventsData: Event[] = [
     id: '1',
     title: 'Food Festival',
     location: 'Badulla town',
-    image: 'https://example.com/food-festival.jpg',
+    image: '../../assets/images/food-festival.jpg',
   },
   {
     id: '2',
     title: 'Book Fair',
     location: 'Colombo',
-    image: 'https://example.com/book-fair.jpg',
+    image: '../../assets/images/book fair.jpg',
   },
 ];
 
@@ -36,21 +36,21 @@ const upcomingEvents: UpcomingEvent[] = [
     title: 'Dance Show',
     location: 'Jaffna',
     date: '15-09-2024',
-    image: 'https://example.com/dance-show.jpg',
+    image: '../../assets/images/dance show.jpg',
   },
   {
     id: '2',
     title: 'Music Concert',
     location: 'Kandy',
     date: '20-09-2024',
-    image: 'https://example.com/music-concert.jpg',
+    image: '../../assets/images/music concert.jpg',
   },
   {
     id: '3',
     title: 'Art Exhibition',
     location: 'Colombo',
     date: '25-09-2024',
-    image: 'https://example.com/art-exhibition.jpg',
+    image: '../../assets/images/art excibition.jpg',
   },
 ];
 

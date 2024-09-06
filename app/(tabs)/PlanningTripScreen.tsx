@@ -157,7 +157,7 @@ const PlanningTripScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5FCFF",
+    backgroundColor: "#FFF",
   },
   scrollViewContent: {
     paddingBottom: 86,
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: "#ccc",
+    backgroundColor: "#000",
     marginHorizontal: 4,
   },
   activeDot: {
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
   },
   planTripSection: {
     padding: 16,
-    backgroundColor: "#E6F3F5",
+    backgroundColor: "#CCE2E2",
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     marginTop: -24,
@@ -221,12 +221,12 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
+    borderWidth: 2,
+    borderColor: "#000",
     borderRadius: 8,
     height: 40,
     paddingHorizontal: 8,
-    backgroundColor: "#fff",
+    backgroundColor: "#CCE2E2",
   },
   destinationsContainer: {
     flexDirection: "row",
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
   },
   selectInput: {
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#000",
     borderRadius: 8,
     height: 40,
     justifyContent: "center",
@@ -267,6 +267,11 @@ const styles = StyleSheet.create({
   },
   picker: {
     height: 40,
+    borderWidth: 1,
+    borderColor: "#000",
+    borderRadius: 8,
+    justifyContent: "center",
+    backgroundColor: "#fff",
   },
 });
 

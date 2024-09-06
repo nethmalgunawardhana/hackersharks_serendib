@@ -1,22 +1,20 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Ionicons, FontAwesome } from '@expo/vector-icons'; // Import FontAwesome for better icon options
-import { useNavigation } from '@react-navigation/native'; // Navigation for settings
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ProfileScreen() {
-    const navigation = useNavigation(); // Hook to handle navigation
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
-            {/* Settings Icon at the top-right corner of the screen */}
             <TouchableOpacity
                 style={styles.settingsIcon}
-                onPress={() => navigation.navigate('SettingsScreen')} // Navigate to Settings screen
+                onPress={() => navigation.navigate('SettingsScreen')}
             >
                 <Ionicons name="settings-outline" size={28} color="black" />
             </TouchableOpacity>
 
-            {/* User Profile Card */}
             <View style={styles.profileContainer}>
                 <Image
                     style={styles.profileImage}
@@ -31,7 +29,6 @@ export default function ProfileScreen() {
                     <Text style={styles.countryName}>Germany</Text>
                 </View>
 
-                {/* Stats Container */}
                 <View style={styles.statsContainer}>
                     <View style={styles.statItem}>
                         <Ionicons name="airplane-outline" size={24} color="blue" />
@@ -51,17 +48,16 @@ export default function ProfileScreen() {
                 </View>
             </View>
 
-            {/* Visa Details */}
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>Visa Details</Text>
                 <View style={styles.detailsContainer}>
-                    <Text style={styles.detailsText}>Visa Type: 1 Year Multiple Entry</Text>
-                    <Text style={styles.detailsText}>Duration: 30 days</Text>
-                    <Text style={styles.detailsText}>Visa No: 111111</Text>
+                    <Text style={styles.noVisaText}>You have not added any visa details.</Text>
+                    <TouchableOpacity style={styles.processVisaButton} onPress={() => console.log('Process Visa')}>
+                        <Text style={styles.processVisaButtonText}>Process Visa</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 
-            {/* Scrollable Personal Details */}
             <ScrollView style={styles.personalDetailsScroll}>
                 <Text style={styles.sectionTitle}>Personal Details</Text>
                 <View style={styles.detailsContainer}>
@@ -83,26 +79,26 @@ const styles = StyleSheet.create({
     },
     settingsIcon: {
         position: 'absolute',
-        top: 40,  // Adjust as needed for padding
-        right: 20, // Adjust as needed for padding
+        top: 40,
+        right: 20,
         zIndex: 1,
     },
     profileContainer: {
         backgroundColor: '#e3f2fd',
         alignItems: 'center',
-        paddingVertical: 10, // Reduce padding to make more space
+        paddingVertical: 10,
         paddingHorizontal: 15,
         borderRadius: 10,
         marginHorizontal: 20,
-        marginTop: 10, // Reduce top margin to make more space
+        marginTop: 10,
     },
     profileImage: {
-        width: 70, // Reduce image size to save space
+        width: 70,
         height: 70,
         borderRadius: 35,
     },
     name: {
-        fontSize: 18, // Adjust font size
+        fontSize: 18,
         fontWeight: 'bold',
         marginVertical: 5,
     },
@@ -116,29 +112,29 @@ const styles = StyleSheet.create({
         marginRight: 5,
     },
     countryName: {
-        fontSize: 14, // Adjust font size for better alignment
+        fontSize: 14,
     },
     statsContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around', // Spread the items evenly
+        justifyContent: 'space-around',
         marginTop: 10,
-        width: '100%', // Take full width for better spacing
+        width: '100%',
     },
     statItem: {
         alignItems: 'center',
     },
     statNumber: {
-        fontSize: 14, // Adjust font size
+        fontSize: 14,
         fontWeight: 'bold',
         marginTop: 3,
     },
     statLabel: {
-        fontSize: 12, // Adjust font size for better spacing
+        fontSize: 12,
         color: '#666',
     },
     section: {
         marginHorizontal: 20,
-        marginVertical: 10, // Add some vertical spacing between sections
+        marginVertical: 10,
     },
     sectionTitle: {
         fontSize: 18,
@@ -160,7 +156,23 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     personalDetailsScroll: {
-        maxHeight: 150, // Limit the height of the scroll area for personal details
+        maxHeight: 150,
         marginHorizontal: 20,
+    },
+    noVisaText: {
+        fontSize: 16,
+        color: '#666',
+        marginBottom: 10,
+    },
+    processVisaButton: {
+        backgroundColor: '#1E90FF',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+    },
+    processVisaButtonText: {
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: 'bold',
     },
 });

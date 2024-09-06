@@ -16,13 +16,14 @@ type RootStackParamList = {
     Registration: undefined;
     Login: undefined;
     Main: undefined;
+    Fogotpassword: undefined;
     };
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>; 
 
 
 export default function LoginScreen() {
-  const navigation = useNavigation<LoginScreenNavigationProp>();
+const navigation = useNavigation<LoginScreenNavigationProp>();
   return (
     <ImageBackground
       source={{ uri: 'https://example.com/your-background-image.jpg' }} 
@@ -44,7 +45,7 @@ export default function LoginScreen() {
           secureTextEntry
         />
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.navigate("Fogotpassword")}>
           <Text style={styles.forgotPassword}>Forget password?</Text>
         </TouchableOpacity>
 
